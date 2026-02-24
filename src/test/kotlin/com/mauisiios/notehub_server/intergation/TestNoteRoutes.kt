@@ -1,4 +1,4 @@
-package com.mauisiios.notehub_server.routes
+package com.mauisiios.notehub_server.intergation
 
 import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
