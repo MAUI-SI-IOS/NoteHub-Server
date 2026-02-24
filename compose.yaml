@@ -2,8 +2,8 @@ services:
   postgres:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: notehubDB
+      POSTGRES_PASSWORD: notehub_password
+      POSTGRES_USER: notehub
     ports:
-      - '5432'
+      - "5432:5432"
