@@ -20,35 +20,32 @@ java {
 
 repositories {
     mavenCentral()
+
 }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-data-rest")
-    implementation("org.springframework.boot:spring-boot-starter-session-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-webclient")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("tools.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.springframework.boot:spring-boot-starter-r2dbc")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-    runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-data-rest-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-session-jdbc-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webclient-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+    testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testImplementation("org.testcontainers:testcontainers-postgresql")
+    testImplementation("org.testcontainers:r2dbc:1.21.4")
+    runtimeOnly("org.postgresql:r2dbc-postgresql")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
