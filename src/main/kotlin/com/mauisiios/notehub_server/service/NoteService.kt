@@ -1,6 +1,6 @@
 package com.mauisiios.notehub_server.service
 
-import com.mauisiios.notehub_server.data.entity.Note
+import com.mauisiios.notehub_server.data.entity.NoteEntity
 import com.mauisiios.notehub_server.data.repo.NoteRepository
 import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.mapper.toDto
@@ -14,7 +14,7 @@ class NoteService(
     private val noteRepository: NoteRepository
 ) {
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
-        .map(Note::toDto)
+        .map(NoteEntity::toDto)
 
     suspend fun getById(id: Long): NoteDto? = noteRepository.findById(id)
         ?.toDto()

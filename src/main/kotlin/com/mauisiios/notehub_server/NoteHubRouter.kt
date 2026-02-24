@@ -6,11 +6,10 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.server.RouterFunction
 import org.springframework.web.reactive.function.server.ServerResponse
-import org.springframework.web.reactive.function.server.bodyValueAndAwait
 import org.springframework.web.reactive.function.server.coRouter
 
 @Configuration(proxyBeanMethods = false)
-class NoteHubRouter() {
+class NoteHubRouter {
 
     @Bean
     fun notesRoutes(

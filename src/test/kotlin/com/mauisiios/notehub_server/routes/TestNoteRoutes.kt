@@ -1,7 +1,6 @@
 package com.mauisiios.notehub_server.routes
 
 import com.mauisiios.notehub_server.TestcontainersConfiguration
-import com.mauisiios.notehub_server.data.entity.Note
 import com.mauisiios.notehub_server.dto.NoteDto
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
