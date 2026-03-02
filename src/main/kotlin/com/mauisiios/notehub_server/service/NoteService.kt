@@ -22,7 +22,12 @@ class NoteService(
     suspend fun getByTitle(title: String): NoteDto? = noteRepository.findByTitle(title)
         ?.toDto()
 
-    suspend fun createNote(note: NoteDto) = noteRepository.save(note.toEntity())
+    suspend fun createNote(note: NoteDto) {
+
+
+
+        noteRepository.save(note.toEntity())
+    }
 
     suspend fun deleteNote(id: Long) = noteRepository.deleteById(id)
 

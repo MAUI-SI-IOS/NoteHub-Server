@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+
+    implementation("org.apache.opennlp:opennlp-tools:2.3.1")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-webclient")
     implementation("org.springframework.boot:spring-boot-starter-webflux")

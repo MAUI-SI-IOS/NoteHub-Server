@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: NoteHub Server
+  r2dbc:
+    url: r2dbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:notehubDB}
+    username: ${POSTGRES_USER:notehub}
+    password: ${POSTGRES_PASSWORD:notehub_password}
+  sql:
+    init:
+      mode: always
+server:
+  port: 8080
