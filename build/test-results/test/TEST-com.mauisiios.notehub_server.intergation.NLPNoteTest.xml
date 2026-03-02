@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mauisiios.notehub_server.intergation.NLPNoteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-03-02T23:08:25.419Z" hostname="fedora" time="0.851">
+  <properties/>
+  <testcase name="testCreateNote()" classname="com.mauisiios.notehub_server.intergation.NLPNoteTest" time="0.027"/>
+  <system-out><![CDATA[2026-03-02T18:08:25.422-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mauisiios.notehub_server.intergation.NLPNoteTest]: NLPNoteTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-02T18:08:25.431-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mauisiios.notehub_server.NoteHubServerApplication for test class com.mauisiios.notehub_server.intergation.NLPNoteTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.3)
+
+2026-03-02T18:08:25.469-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.NLPNoteTest            : Starting NLPNoteTest using Java 21.0.10 with PID 230169 (started by lililatortue in /home/lililatortue/Dev/Java/projects/NoteHub-Server)
+2026-03-02T18:08:25.470-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.NLPNoteTest            : No active profile set, falling back to 1 default profile: "default"
+2026-03-02T18:08:25.670-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2026-03-02T18:08:25.683-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 R2DBC repository interface.
+2026-03-02T18:08:26.169-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-02T18:08:26.238-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.NLPNoteTest            : Started NLPNoteTest in 0.799 seconds (process running for 18.063)
+{plag=1}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
