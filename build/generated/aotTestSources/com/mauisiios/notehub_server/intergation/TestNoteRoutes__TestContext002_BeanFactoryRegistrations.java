@@ -4,7 +4,10 @@ import com.mauisiios.notehub_server.NoteHubRouter__TestContext002_BeanDefinition
 import com.mauisiios.notehub_server.NoteHubServerApplication__TestContext002_BeanDefinitions;
 import com.mauisiios.notehub_server.TestcontainersConfiguration__TestContext002_BeanDefinitions;
 import com.mauisiios.notehub_server.data.repo.NoteRepository__TestContext002_BeanDefinitions;
+import com.mauisiios.notehub_server.data.repo.NoteTokenRepository__TestContext002_BeanDefinitions;
+import com.mauisiios.notehub_server.data.repo.TokenRepository__TestContext002_BeanDefinitions;
 import com.mauisiios.notehub_server.handler.NoteHandler__TestContext002_BeanDefinitions;
+import com.mauisiios.notehub_server.handler.TokenHandler__TestContext002_BeanDefinitions;
 import com.mauisiios.notehub_server.service.NLPService__TestContext002_BeanDefinitions;
 import com.mauisiios.notehub_server.service.NoteService__TestContext002_BeanDefinitions;
 import org.springframework.aop.framework.ProxyConfig__TestContext002_BeanDefinitions;
@@ -148,6 +151,7 @@ public class TestNoteRoutes__TestContext002_BeanFactoryRegistrations {
     beanFactory.registerBeanDefinition("noteHubServerApplication", NoteHubServerApplication__TestContext002_BeanDefinitions.getNoteHubServerApplicationBeanDefinition());
     beanFactory.registerBeanDefinition("noteHubRouter", NoteHubRouter__TestContext002_BeanDefinitions.getNoteHubRouterBeanDefinition());
     beanFactory.registerBeanDefinition("noteHandler", NoteHandler__TestContext002_BeanDefinitions.getNoteHandlerBeanDefinition());
+    beanFactory.registerBeanDefinition("tokenHandler", TokenHandler__TestContext002_BeanDefinitions.getTokenHandlerBeanDefinition());
     beanFactory.registerBeanDefinition("NLPService", NLPService__TestContext002_BeanDefinitions.getNLPServiceBeanDefinition());
     beanFactory.registerBeanDefinition("noteService", NoteService__TestContext002_BeanDefinitions.getNoteServiceBeanDefinition());
     beanFactory.registerBeanDefinition("com.mauisiios.notehub_server.TestcontainersConfiguration", TestcontainersConfiguration__TestContext002_BeanDefinitions.getTestcontainersConfigurationBeanDefinition());
@@ -305,7 +309,13 @@ public class TestNoteRoutes__TestContext002_BeanFactoryRegistrations {
     beanFactory.registerBeanDefinition("r2dbcCustomConversions", DataR2dbcAutoConfiguration__TestContext002_BeanDefinitions.getRdbcCustomConversionsBeanDefinition());
     beanFactory.registerBeanDefinition("org.springframework.boot.data.r2dbc.autoconfigure.DataR2dbcRepositoriesAutoConfiguration", DataR2dbcRepositoriesAutoConfiguration__TestContext002_BeanDefinitions.getDataRdbcRepositoriesAutoConfigurationBeanDefinition());
     beanFactory.registerBeanDefinition("r2dbc.named-queries#0", PropertiesBasedNamedQueries__TestContext002_BeanDefinitions.getNamedqueriesBeanDefinition());
-    beanFactory.registerBeanDefinition("r2dbc.NoteRepository.fragments#0", RepositoryComposition__TestContext002_BeanDefinitions.RepositoryFragments.getFragmentsBeanDefinition());
+    beanFactory.registerBeanDefinition("r2dbc.TokenRepository.fragments#0", RepositoryComposition__TestContext002_BeanDefinitions.RepositoryFragments.getFragmentsBeanDefinition());
+    beanFactory.registerBeanDefinition("tokenRepository", TokenRepository__TestContext002_BeanDefinitions.getTokenRepositoryBeanDefinition());
+    beanFactory.registerBeanDefinition("r2dbc.named-queries#1", PropertiesBasedNamedQueries__TestContext002_BeanDefinitions.getNamedqueriesBeanDefinition1());
+    beanFactory.registerBeanDefinition("r2dbc.NoteTokenRepository.fragments#0", RepositoryComposition__TestContext002_BeanDefinitions.RepositoryFragments.getFragmentsBeanDefinition1());
+    beanFactory.registerBeanDefinition("noteTokenRepository", NoteTokenRepository__TestContext002_BeanDefinitions.getNoteTokenRepositoryBeanDefinition());
+    beanFactory.registerBeanDefinition("r2dbc.named-queries#2", PropertiesBasedNamedQueries__TestContext002_BeanDefinitions.getNamedqueriesBeanDefinition2());
+    beanFactory.registerBeanDefinition("r2dbc.NoteRepository.fragments#0", RepositoryComposition__TestContext002_BeanDefinitions.RepositoryFragments.getFragmentsBeanDefinition2());
     beanFactory.registerBeanDefinition("noteRepository", NoteRepository__TestContext002_BeanDefinitions.getNoteRepositoryBeanDefinition());
     beanFactory.registerBeanDefinition("org.springframework.boot.health.autoconfigure.application.AvailabilityHealthContributorAutoConfiguration", AvailabilityHealthContributorAutoConfiguration__TestContext002_BeanDefinitions.getAvailabilityHealthContributorAutoConfigurationBeanDefinition());
     beanFactory.registerBeanDefinition("org.springframework.boot.health.autoconfigure.actuate.endpoint.AvailabilityProbesAutoConfiguration", AvailabilityProbesAutoConfiguration__TestContext002_BeanDefinitions.getAvailabilityProbesAutoConfigurationBeanDefinition());

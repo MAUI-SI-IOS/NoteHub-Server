@@ -1,6 +1,7 @@
 package org.springframework.boot.data.r2dbc.autoconfigure;
 
 import com.mauisiios.notehub_server.data.entity.NoteEntity;
+import com.mauisiios.notehub_server.data.entity.TokenEntity;
 import java.lang.Class;
 import java.util.List;
 import org.springframework.aot.generate.Generated;
@@ -64,7 +65,7 @@ public class DataR2dbcAutoConfiguration__TestContext001_BeanDefinitions {
    */
   private static InstanceSupplier<RelationalManagedTypes> rdbcManagedTypesInstance() {
     return (registeredBean ->  {
-      List<Class<?>> types = List.of(NoteEntity.class);
+      List<Class<?>> types = List.of(TokenEntity.class, NoteEntity.class);
       ManagedTypes managedTypes = ManagedTypes.fromIterable(types);
       return RelationalManagedTypes.from(managedTypes);
     } );

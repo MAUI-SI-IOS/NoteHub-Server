@@ -10,9 +10,6 @@ import reactor.core.publisher.Mono
 class TokenHandler {
 
 
-    fun fetchToken(request: ServerRequest): Mono<ServerResponse> {
-        val token = request.pathVariable("token")
 
-    }
 
 }

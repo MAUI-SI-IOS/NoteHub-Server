@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.mauisiios.notehub_server.intergation.TestNoteRoutes" tests="6" skipped="0" failures="6" errors="0" timestamp="2026-03-02T23:08:10.181Z" hostname="fedora" time="15.23">
+<testsuite name="com.mauisiios.notehub_server.intergation.TestNoteRoutes" tests="6" skipped="0" failures="6" errors="0" timestamp="2026-03-04T14:15:30.162Z" hostname="fedora" time="4.501">
   <properties/>
-  <testcase name="should return all notes()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="1.088">
+  <testcase name="should return all notes()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.531">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -122,7 +122,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should update a note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.011">
+  <testcase name="should update a note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.005">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -243,7 +243,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should return a single note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.012">
+  <testcase name="should return a single note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.005">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -364,7 +364,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should create a new note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.012">
+  <testcase name="should create a new note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.005">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -485,7 +485,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should delete a note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.01">
+  <testcase name="should delete a note()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.005">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -606,7 +606,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should return a single note by title()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.01">
+  <testcase name="should return a single note by title()" classname="com.mauisiios.notehub_server.intergation.TestNoteRoutes" time="0.004">
     <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
@@ -727,8 +727,8 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <system-out><![CDATA[18:08:10.378 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mauisiios.notehub_server.intergation.TestNoteRoutes]: TestNoteRoutes does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:08:10.547 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mauisiios.notehub_server.NoteHubServerApplication for test class com.mauisiios.notehub_server.intergation.TestNoteRoutes
+  <system-out><![CDATA[2026-03-04T09:15:30.164-05:00  INFO 112332 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mauisiios.notehub_server.intergation.TestNoteRoutes]: TestNoteRoutes does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-04T09:15:30.169-05:00  INFO 112332 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mauisiios.notehub_server.NoteHubServerApplication for test class com.mauisiios.notehub_server.intergation.TestNoteRoutes
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -739,35 +739,35 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 
  :: Spring Boot ::                (v4.0.3)
 
-2026-03-02T18:08:11.322-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.TestNoteRoutes         : Starting TestNoteRoutes using Java 21.0.10 with PID 230169 (started by lililatortue in /home/lililatortue/Dev/Java/projects/NoteHub-Server)
-2026-03-02T18:08:11.324-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.TestNoteRoutes         : No active profile set, falling back to 1 default profile: "default"
-2026-03-02T18:08:12.465-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
-2026-03-02T18:08:12.606-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 1 R2DBC repository interface.
-2026-03-02T18:08:13.134-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
-2026-03-02T18:08:13.136-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-2026-03-02T18:08:13.157-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.3
-2026-03-02T18:08:13.313-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-2026-03-02T18:08:13.881-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
-2026-03-02T18:08:13.883-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
-2026-03-02T18:08:13.905-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.DockerClientFactory   : Connected to docker: 
+2026-03-04T09:15:30.194-05:00  INFO 112332 --- [    Test worker] c.m.n.intergation.TestNoteRoutes         : Starting TestNoteRoutes using Java 21.0.10 with PID 112332 (started by lililatortue in /home/lililatortue/Dev/Java/projects/NoteHub-Server)
+2026-03-04T09:15:30.194-05:00  INFO 112332 --- [    Test worker] c.m.n.intergation.TestNoteRoutes         : No active profile set, falling back to 1 default profile: "default"
+2026-03-04T09:15:30.295-05:00  INFO 112332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2026-03-04T09:15:30.303-05:00  INFO 112332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 3 R2DBC repository interfaces.
+2026-03-04T09:15:30.477-05:00  INFO 112332 --- [    Test worker] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-03-04T09:15:30.478-05:00  INFO 112332 --- [    Test worker] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-03-04T09:15:30.490-05:00  INFO 112332 --- [    Test worker] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.3
+2026-03-04T09:15:30.571-05:00  INFO 112332 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-03-04T09:15:30.807-05:00  INFO 112332 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2026-03-04T09:15:30.808-05:00  INFO 112332 --- [    Test worker] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-03-04T09:15:30.817-05:00  INFO 112332 --- [    Test worker] org.testcontainers.DockerClientFactory   : Connected to docker: 
   Server Version: 29.2.1
   API Version: 1.53
   Operating System: Fedora Linux 43 (Workstation Edition)
   Total Memory: 15676 MB
-2026-03-02T18:08:14.039-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.testcontainers/ryuk:0.13.0            : Creating container for image: testcontainers/ryuk:0.13.0
-2026-03-02T18:08:14.045-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.13.0, configFile: /home/lililatortue/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/lililatortue/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
-2026-03-02T18:08:14.637-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 is starting: 868a5728b3b0cc45c654043650268e195afc399623649e6c642465a5741b6a2b
-2026-03-02T18:08:15.774-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 started in PT1.73486923S
-2026-03-02T18:08:15.791-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-2026-03-02T18:08:15.792-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.DockerClientFactory   : Checking the system...
-2026-03-02T18:08:15.795-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
-2026-03-02T18:08:15.797-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.postgres:latest                       : Creating container for image: postgres:latest
-2026-03-02T18:08:16.190-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.postgres:latest                       : Container postgres:latest is starting: 7005ddb2c3b9a2dccadf4f387c7b700a97090373e53998475426225a6016f745
-2026-03-02T18:08:21.965-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.postgres:latest                       : Container postgres:latest started in PT6.168346773S
-2026-03-02T18:08:21.969-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] tc.postgres:latest                       : Container is started (JDBC URL: jdbc:postgresql://localhost:32811/notehubDB?loggerLevel=OFF)
-2026-03-02T18:08:23.735-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-02T18:08:24.219-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 33313 (http)
-2026-03-02T18:08:24.228-05:00  INFO 230169 --- [NoteHub Server] [    Test worker] c.m.n.intergation.TestNoteRoutes         : Started TestNoteRoutes in 13.261 seconds (process running for 16.054)
+2026-03-04T09:15:30.868-05:00  INFO 112332 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Creating container for image: testcontainers/ryuk:0.13.0
+2026-03-04T09:15:30.872-05:00  INFO 112332 --- [    Test worker] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.13.0, configFile: /home/lililatortue/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/lililatortue/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
+2026-03-04T09:15:31.005-05:00  INFO 112332 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 is starting: 3e8819a6221a32d083bd72245cbe33ff0e5aaa064807640cfe16e4442b05cc02
+2026-03-04T09:15:31.225-05:00  INFO 112332 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 started in PT0.356709471S
+2026-03-04T09:15:31.228-05:00  INFO 112332 --- [    Test worker] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-03-04T09:15:31.228-05:00  INFO 112332 --- [    Test worker] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-03-04T09:15:31.229-05:00  INFO 112332 --- [    Test worker] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-03-04T09:15:31.229-05:00  INFO 112332 --- [    Test worker] tc.postgres:latest                       : Creating container for image: postgres:latest
+2026-03-04T09:15:31.318-05:00  INFO 112332 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest is starting: 055176578b746ac2d53faa3a226422d09d53d3ecfc11540a73414df51cd1646d
+2026-03-04T09:15:33.397-05:00  INFO 112332 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest started in PT2.167590258S
+2026-03-04T09:15:33.397-05:00  INFO 112332 --- [    Test worker] tc.postgres:latest                       : Container is started (JDBC URL: jdbc:postgresql://localhost:32817/notehubDB?loggerLevel=OFF)
+2026-03-04T09:15:33.896-05:00  INFO 112332 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-04T09:15:34.089-05:00  INFO 112332 --- [    Test worker] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 46231 (http)
+2026-03-04T09:15:34.092-05:00  INFO 112332 --- [    Test worker] c.m.n.intergation.TestNoteRoutes         : Started TestNoteRoutes in 3.921 seconds (process running for 5.504)
 ]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/lililatortue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.8/f09415827a71be7ed621c7bd02550678f28bc81c/byte-buddy-agent-1.17.8.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

@@ -8,16 +8,11 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 
-@Embeddable
-data class NoteTokenId(
-    val note_id: Long,
-    val token: String
-)
+
 
 @Table(name = "note_token")
 data class NoteTokensEntity (
-    @EmbeddedId
-    var id: NoteTokenId,
-    @Column
-    var frequency: Int = 1,
+    val noteId: Long,
+    val tokenId: String,
+    val frequency: Int = 1,
 )
