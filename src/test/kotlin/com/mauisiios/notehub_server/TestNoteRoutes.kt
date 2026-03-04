@@ -1,6 +1,5 @@
-package com.mauisiios.notehub_server.intergation
+package com.mauisiios.notehub_server
 
-import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -47,12 +46,14 @@ class TestNoteRoutes(
             .expectStatus().isOk
             .expectBodyList<NoteDto>()
             .hasSize(10)
-            .contains(NoteDto(
-                1,
-                "First Note",
-                "Content for the first note",
-                "Formatted content for the first note"
-            ))
+            .contains(
+                NoteDto(
+                    1,
+                    "First Note",
+                    "Content for the first note",
+                    "Formatted content for the first note"
+                )
+            )
     }
 
     @Test
@@ -62,12 +63,14 @@ class TestNoteRoutes(
             .exchange()
             .expectStatus().isOk
             .expectBody<NoteDto>()
-            .isEqualTo(NoteDto(
-                1,
-                "First Note",
-                "Content for the first note",
-                "Formatted content for the first note"
-            ))
+            .isEqualTo(
+                NoteDto(
+                    1,
+                    "First Note",
+                    "Content for the first note",
+                    "Formatted content for the first note"
+                )
+            )
     }
 
     @Test
@@ -77,12 +80,14 @@ class TestNoteRoutes(
             .exchange()
             .expectStatus().isOk
             .expectBody<NoteDto>()
-            .isEqualTo(NoteDto(
-                1,
-                "First Note",
-                "Content for the first note",
-                "Formatted content for the first note"
-            ))
+            .isEqualTo(
+                NoteDto(
+                    1,
+                    "First Note",
+                    "Content for the first note",
+                    "Formatted content for the first note"
+                )
+            )
     }
 
     @Test
