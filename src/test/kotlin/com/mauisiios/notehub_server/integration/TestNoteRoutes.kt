@@ -2,6 +2,7 @@ package com.mauisiios.notehub_server.integration
 
 import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
+import kotlinx.coroutines.reactor.awaitSingle
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,7 +11,6 @@ import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTest
 import org.springframework.context.annotation.Import
 import org.springframework.core.io.ResourceLoader
 import org.springframework.r2dbc.core.DatabaseClient
-import org.springframework.test.context.jdbc.Sql
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.reactive.server.expectBody
 import org.springframework.test.web.reactive.server.expectBodyList
@@ -27,8 +27,17 @@ class TestNoteRoutes(
     @BeforeEach
     fun seed() {
         // clean database
-        dbClient.sql("TRUNCATE TABLE note RESTART IDENTITY CASCADE")
-            .fetch().rowsUpdated().block()
+        //dbClient.sql("TRUNCATE TABLE note RESTART IDENTITY CASCADE")
+            //.fetch().rowsUpdated().block()
+        println("--- DATABASE TABLES ---")
+        dbClient.sql("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+            .fetch()
+            .all()
+            .doOnNext { row -> println("Table found: ${row["table_name"]}") }
+            .collectList()
+            .block()
+
+        println("----------------------")
 
         val testDataResource = rescLoader.getResource("classpath:test-data.sql")
         val sql = testDataResource.inputStream.readBytes()

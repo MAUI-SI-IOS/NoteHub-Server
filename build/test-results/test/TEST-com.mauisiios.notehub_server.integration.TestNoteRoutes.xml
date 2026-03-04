@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.mauisiios.notehub_server.integration.TestNoteRoutes" tests="6" skipped="0" failures="6" errors="0" timestamp="2026-03-04T15:51:46.090Z" hostname="fedora" time="5.601">
+<testsuite name="com.mauisiios.notehub_server.integration.TestNoteRoutes" tests="6" skipped="0" failures="6" errors="0" timestamp="2026-03-04T16:05:21.275Z" hostname="fedora" time="5.765">
   <properties/>
-  <testcase name="should return all notes()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.548">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should return all notes()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.601">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -112,7 +125,7 @@
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -122,8 +135,21 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should update a note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.005">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should update a note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.01">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -233,7 +259,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -243,8 +269,21 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should return a single note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.003">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should return a single note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.008">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -354,7 +393,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -364,8 +403,21 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should create a new note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.004">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should create a new note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.009">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -475,7 +527,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -485,8 +537,21 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should delete a note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.005">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should delete a note()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.006">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -596,7 +661,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -606,8 +671,21 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <testcase name="should return a single note by title()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.005">
-    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [TRUNCATE TABLE note RESTART IDENTITY CASCADE]
+  <testcase name="should return a single note by title()" classname="com.mauisiios.notehub_server.integration.TestNoteRoutes" time="0.007">
+    <failure message="org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)&#10;VALUES&#10;    ('First Note', 'Content for the first note', 'Formatted content for the first note'),&#10;    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),&#10;    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),&#10;    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),&#10;    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),&#10;    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),&#10;    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),&#10;    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),&#10;    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),&#10;    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');&#10;&#10;]" type="org.springframework.r2dbc.BadSqlGrammarException">org.springframework.r2dbc.BadSqlGrammarException: execute; bad SQL grammar [INSERT INTO note (title, raw_content, formatted_content)
+VALUES
+    ('First Note', 'Content for the first note', 'Formatted content for the first note'),
+    ('Second Note', 'Content for the second note', 'Formatted content for the second note'),
+    ('Third Note', 'Content for the third note', 'Formatted content for the third note'),
+    ('Fourth Note', 'Content for the fourth note', 'Formatted content for the fourth note'),
+    ('Fifth Note', 'Content for the fifth note', 'Formatted content for the fifth note'),
+    ('Sixth Note', 'Content for the sixth note', 'Formatted content for the sixth note'),
+    ('Seventh Note', 'Content for the seventh note', 'Formatted content for the seventh note'),
+    ('Eighth Note', 'Content for the eighth note', 'Formatted content for the eighth note'),
+    ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note'),
+    ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
+
+]
 	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:255)
 	at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnection$3(DefaultDatabaseClient.java:134)
 	at reactor.core.publisher.Mono.lambda$onErrorMap$0(Mono.java:3841)
@@ -717,7 +795,7 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
 		at reactor.core.publisher.Mono.block(Mono.java:1773)
-		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:31)
+		at com.mauisiios.notehub_server.integration.TestNoteRoutes.seed(TestNoteRoutes.kt:49)
 Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation &quot;note&quot; does not exist
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96)
 	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65)
@@ -727,8 +805,8 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 	... 40 more
 </failure>
   </testcase>
-  <system-out><![CDATA[10:51:46.170 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mauisiios.notehub_server.integration.TestNoteRoutes]: TestNoteRoutes does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-10:51:46.233 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mauisiios.notehub_server.NoteHubServerApplication for test class com.mauisiios.notehub_server.integration.TestNoteRoutes
+  <system-out><![CDATA[11:05:21.377 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mauisiios.notehub_server.integration.TestNoteRoutes]: TestNoteRoutes does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:05:21.461 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mauisiios.notehub_server.NoteHubServerApplication for test class com.mauisiios.notehub_server.integration.TestNoteRoutes
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -739,35 +817,47 @@ Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [
 
  :: Spring Boot ::                (v4.0.3)
 
-2026-03-04T10:51:46.544-05:00  INFO 129479 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : Starting TestNoteRoutes using Java 21.0.10 with PID 129479 (started by lililatortue in /home/lililatortue/Dev/Java/projects/NoteHub-Server)
-2026-03-04T10:51:46.545-05:00  INFO 129479 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : No active profile set, falling back to 1 default profile: "default"
-2026-03-04T10:51:46.895-05:00  INFO 129479 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
-2026-03-04T10:51:46.957-05:00  INFO 129479 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 3 R2DBC repository interfaces.
-2026-03-04T10:51:47.188-05:00  INFO 129479 --- [    Test worker] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
-2026-03-04T10:51:47.188-05:00  INFO 129479 --- [    Test worker] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-2026-03-04T10:51:47.196-05:00  INFO 129479 --- [    Test worker] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.3
-2026-03-04T10:51:47.257-05:00  INFO 129479 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-2026-03-04T10:51:47.459-05:00  INFO 129479 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
-2026-03-04T10:51:47.459-05:00  INFO 129479 --- [    Test worker] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
-2026-03-04T10:51:47.469-05:00  INFO 129479 --- [    Test worker] org.testcontainers.DockerClientFactory   : Connected to docker: 
+2026-03-04T11:05:21.812-05:00  INFO 138121 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : Starting TestNoteRoutes using Java 21.0.10 with PID 138121 (started by lililatortue in /home/lililatortue/Dev/Java/projects/NoteHub-Server)
+2026-03-04T11:05:21.813-05:00  INFO 138121 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : No active profile set, falling back to 1 default profile: "default"
+2026-03-04T11:05:22.183-05:00  INFO 138121 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2026-03-04T11:05:22.250-05:00  INFO 138121 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 3 R2DBC repository interfaces.
+2026-03-04T11:05:22.502-05:00  INFO 138121 --- [    Test worker] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-03-04T11:05:22.503-05:00  INFO 138121 --- [    Test worker] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-03-04T11:05:22.512-05:00  INFO 138121 --- [    Test worker] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.3
+2026-03-04T11:05:22.588-05:00  INFO 138121 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-03-04T11:05:22.823-05:00  INFO 138121 --- [    Test worker] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2026-03-04T11:05:22.823-05:00  INFO 138121 --- [    Test worker] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-03-04T11:05:22.835-05:00  INFO 138121 --- [    Test worker] org.testcontainers.DockerClientFactory   : Connected to docker: 
   Server Version: 29.2.1
   API Version: 1.53
   Operating System: Fedora Linux 43 (Workstation Edition)
   Total Memory: 15676 MB
-2026-03-04T10:51:47.537-05:00  INFO 129479 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Creating container for image: testcontainers/ryuk:0.13.0
-2026-03-04T10:51:47.539-05:00  INFO 129479 --- [    Test worker] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.13.0, configFile: /home/lililatortue/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/lililatortue/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
-2026-03-04T10:51:47.703-05:00  INFO 129479 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 is starting: f9c5793a71fba1901e4056b4cf81889429a44ef014e67b92b332840194ddf144
-2026-03-04T10:51:47.933-05:00  INFO 129479 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 started in PT0.396102237S
-2026-03-04T10:51:47.937-05:00  INFO 129479 --- [    Test worker] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-2026-03-04T10:51:47.937-05:00  INFO 129479 --- [    Test worker] org.testcontainers.DockerClientFactory   : Checking the system...
-2026-03-04T10:51:47.937-05:00  INFO 129479 --- [    Test worker] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
-2026-03-04T10:51:47.937-05:00  INFO 129479 --- [    Test worker] tc.postgres:latest                       : Creating container for image: postgres:latest
-2026-03-04T10:51:48.095-05:00  INFO 129479 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest is starting: 03798c795518edd65875ee3ea4e2ded3957d66bc29e471e4e64cd07054b827ba
-2026-03-04T10:51:50.273-05:00  INFO 129479 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest started in PT2.335649896S
-2026-03-04T10:51:50.274-05:00  INFO 129479 --- [    Test worker] tc.postgres:latest                       : Container is started (JDBC URL: jdbc:postgresql://localhost:32825/notehubDB?loggerLevel=OFF)
-2026-03-04T10:51:50.881-05:00  INFO 129479 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-04T10:51:51.099-05:00  INFO 129479 --- [    Test worker] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 45629 (http)
-2026-03-04T10:51:51.103-05:00  INFO 129479 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : Started TestNoteRoutes in 4.698 seconds (process running for 5.413)
+2026-03-04T11:05:22.893-05:00  INFO 138121 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Creating container for image: testcontainers/ryuk:0.13.0
+2026-03-04T11:05:22.896-05:00  INFO 138121 --- [    Test worker] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.13.0, configFile: /home/lililatortue/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/lililatortue/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
+2026-03-04T11:05:23.046-05:00  INFO 138121 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 is starting: 35e38ab693ebd2afa4401b92953732a595074af79d1f440918be9dc15c25a512
+2026-03-04T11:05:23.282-05:00  INFO 138121 --- [    Test worker] tc.testcontainers/ryuk:0.13.0            : Container testcontainers/ryuk:0.13.0 started in PT0.388567999S
+2026-03-04T11:05:23.286-05:00  INFO 138121 --- [    Test worker] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-03-04T11:05:23.286-05:00  INFO 138121 --- [    Test worker] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-03-04T11:05:23.286-05:00  INFO 138121 --- [    Test worker] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-03-04T11:05:23.287-05:00  INFO 138121 --- [    Test worker] tc.postgres:latest                       : Creating container for image: postgres:latest
+2026-03-04T11:05:23.378-05:00  INFO 138121 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest is starting: 9bb36ab155fb2f6cf2f93c10332c57e1444c8e19ec7ab22e8e49d6d1b0fabba6
+2026-03-04T11:05:25.521-05:00  INFO 138121 --- [    Test worker] tc.postgres:latest                       : Container postgres:latest started in PT2.234711325S
+2026-03-04T11:05:25.522-05:00  INFO 138121 --- [    Test worker] tc.postgres:latest                       : Container is started (JDBC URL: jdbc:postgresql://localhost:32839/notehubDB?loggerLevel=OFF)
+2026-03-04T11:05:26.151-05:00  INFO 138121 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-04T11:05:26.374-05:00  INFO 138121 --- [    Test worker] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 44337 (http)
+2026-03-04T11:05:26.378-05:00  INFO 138121 --- [    Test worker] c.m.n.integration.TestNoteRoutes         : Started TestNoteRoutes in 4.725 seconds (process running for 5.619)
+--- DATABASE TABLES ---
+----------------------
+--- DATABASE TABLES ---
+----------------------
+--- DATABASE TABLES ---
+----------------------
+--- DATABASE TABLES ---
+----------------------
+--- DATABASE TABLES ---
+----------------------
+--- DATABASE TABLES ---
+----------------------
 ]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/lililatortue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.8/f09415827a71be7ed621c7bd02550678f28bc81c/byte-buddy-agent-1.17.8.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

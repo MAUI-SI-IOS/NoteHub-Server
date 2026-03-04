@@ -19,7 +19,7 @@ public class RepositoryComposition__TestContext001_BeanDefinitions {
   @Generated
   public static class RepositoryFragments {
     /**
-     * Get the bean instance supplier for 'r2dbc.TokenRepository.fragments#0'.
+     * Get the bean instance supplier for 'r2dbc.NoteRepository.fragments#0'.
      */
     private static BeanInstanceSupplier<RepositoryFragmentsFactoryBean> getFragmentsInstanceSupplier(
         ) {
@@ -40,7 +40,7 @@ public class RepositoryComposition__TestContext001_BeanDefinitions {
     }
 
     /**
-     * Get the bean instance supplier for 'r2dbc.NoteRepository.fragments#0'.
+     * Get the bean instance supplier for 'r2dbc.NoteTokenRepository.fragments#0'.
      */
     private static BeanInstanceSupplier<RepositoryFragmentsFactoryBean> getFragmentsInstanceSupplier1(
         ) {
@@ -61,7 +61,7 @@ public class RepositoryComposition__TestContext001_BeanDefinitions {
     }
 
     /**
-     * Get the bean instance supplier for 'r2dbc.NoteTokenRepository.fragments#0'.
+     * Get the bean instance supplier for 'r2dbc.TokenRepository.fragments#0'.
      */
     private static BeanInstanceSupplier<RepositoryFragmentsFactoryBean> getFragmentsInstanceSupplier2(
         ) {
