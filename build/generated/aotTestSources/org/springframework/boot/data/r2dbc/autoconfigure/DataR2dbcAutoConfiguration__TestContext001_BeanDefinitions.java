@@ -65,7 +65,7 @@ public class DataR2dbcAutoConfiguration__TestContext001_BeanDefinitions {
    */
   private static InstanceSupplier<RelationalManagedTypes> rdbcManagedTypesInstance() {
     return (registeredBean ->  {
-      List<Class<?>> types = List.of(TokenEntity.class, NoteEntity.class);
+      List<Class<?>> types = List.of(NoteEntity.class, TokenEntity.class);
       ManagedTypes managedTypes = ManagedTypes.fromIterable(types);
       return RelationalManagedTypes.from(managedTypes);
     } );

@@ -12,8 +12,7 @@ import org.springframework.aot.generate.Generated;
 public class AotTestAttributes__Generated {
   public static Map<String, String> getAttributes() {
     Map<String, String> map = new HashMap<>();
-    map.put("org.springframework.boot.test.context.SpringBootTestContextBootstrapper.SpringBootConfiguration.com.mauisiios.notehub_server.intergation.NLPNoteTest", "com.mauisiios.notehub_server.NoteHubServerApplication");
-    map.put("org.springframework.boot.test.context.SpringBootTestContextBootstrapper.SpringBootConfiguration.com.mauisiios.notehub_server.intergation.TestNoteRoutes", "com.mauisiios.notehub_server.NoteHubServerApplication");
+    map.put("org.springframework.boot.test.context.SpringBootTestContextBootstrapper.SpringBootConfiguration.com.mauisiios.notehub_server.integration.TestNoteRoutes", "com.mauisiios.notehub_server.NoteHubServerApplication");
     return map;
   }
 }

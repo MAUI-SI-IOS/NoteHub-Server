@@ -1,0 +1,6 @@
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should return all notes()]
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should update a note()]
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should return a single note()]
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should create a new note()]
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should delete a note()]
+[engine:junit-jupiter]/[class:com.mauisiios.notehub_server.integration.TestNoteRoutes]/[method:should return a single note by title()]

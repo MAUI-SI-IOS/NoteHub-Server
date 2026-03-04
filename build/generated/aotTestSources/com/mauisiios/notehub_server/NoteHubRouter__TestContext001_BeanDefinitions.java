@@ -1,6 +1,7 @@
 package com.mauisiios.notehub_server;
 
 import com.mauisiios.notehub_server.handler.NoteHandler;
+import com.mauisiios.notehub_server.handler.TokenHandler;
 import org.springframework.aot.generate.Generated;
 import org.springframework.beans.factory.aot.BeanInstanceSupplier;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -27,8 +28,8 @@ public class NoteHubRouter__TestContext001_BeanDefinitions {
    * Get the bean instance supplier for 'notesRoutes'.
    */
   private static BeanInstanceSupplier<RouterFunction> getNotesRoutesInstanceSupplier() {
-    return BeanInstanceSupplier.<RouterFunction>forFactoryMethod(NoteHubRouter.class, "notesRoutes", NoteHandler.class)
-            .withGenerator((registeredBean, args) -> registeredBean.getBeanFactory().getBean("noteHubRouter", NoteHubRouter.class).notesRoutes(args.get(0)));
+    return BeanInstanceSupplier.<RouterFunction>forFactoryMethod(NoteHubRouter.class, "notesRoutes", NoteHandler.class, TokenHandler.class)
+            .withGenerator((registeredBean, args) -> registeredBean.getBeanFactory().getBean("noteHubRouter", NoteHubRouter.class).notesRoutes(args.get(0), args.get(1)));
   }
 
   /**

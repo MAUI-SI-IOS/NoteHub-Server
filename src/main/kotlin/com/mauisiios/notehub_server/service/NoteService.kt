@@ -1,7 +1,6 @@
 package com.mauisiios.notehub_server.service
 
 import com.mauisiios.notehub_server.data.entity.NoteEntity
-import com.mauisiios.notehub_server.data.entity.NoteTokenId
 import com.mauisiios.notehub_server.data.entity.NoteTokensEntity
 import com.mauisiios.notehub_server.data.entity.TokenEntity
 import com.mauisiios.notehub_server.data.repo.NoteRepository
@@ -32,7 +31,7 @@ class NoteService(
     suspend fun getByTitle(title: String): NoteDto? = noteRepository.findByTitle(title)
         ?.toDto()
 
-    @Transactional
+
     suspend fun createNote(note: NoteDto) {
         val note = noteRepository.save(note.toEntity())
         val note_id = note.id  ?: throw IllegalStateException("Couldnt find note id");
@@ -49,7 +48,8 @@ class NoteService(
 
         val noteTokens = words.map { (word, frequency)->
             NoteTokensEntity(
-                NoteTokenId(note_id, word),
+                note_id,
+                word,
                 frequency
             )
         }

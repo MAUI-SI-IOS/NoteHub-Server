@@ -1,8 +1,8 @@
 package com.mauisiios.notehub_server.data.repo;
 
-import com.mauisiios.notehub_server.data.entity.NoteTokenId;
 import com.mauisiios.notehub_server.data.entity.NoteTokensEntity;
 import java.lang.Class;
+import java.lang.Long;
 import org.springframework.aot.generate.Generated;
 import org.springframework.beans.factory.aot.BeanInstanceSupplier;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -31,7 +31,7 @@ public class NoteTokenRepository__TestContext001_BeanDefinitions {
    */
   public static BeanDefinition getNoteTokenRepositoryBeanDefinition() {
     RootBeanDefinition beanDefinition = new RootBeanDefinition(R2dbcRepositoryFactoryBean.class);
-    beanDefinition.setTargetType(ResolvableType.forClassWithGenerics(R2dbcRepositoryFactoryBean.class, NoteTokenRepository.class, NoteTokensEntity.class, NoteTokenId.class));
+    beanDefinition.setTargetType(ResolvableType.forClassWithGenerics(R2dbcRepositoryFactoryBean.class, NoteTokenRepository.class, NoteTokensEntity.class, Long.class));
     beanDefinition.setLazyInit(false);
     beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0, "com.mauisiios.notehub_server.data.repo.NoteTokenRepository");
     beanDefinition.getPropertyValues().addPropertyValue("queryLookupStrategyKey", QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND);
