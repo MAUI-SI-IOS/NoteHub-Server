@@ -27,8 +27,10 @@ class TestNoteRoutes(
     @BeforeEach
     fun seed() {
         // clean database
-        //dbClient.sql("TRUNCATE TABLE note RESTART IDENTITY CASCADE")
-            //.fetch().rowsUpdated().block()
+        dbClient.sql("TRUNCATE TABLE note RESTART IDENTITY CASCADE")
+            .fetch().rowsUpdated().block()
+
+      /*
         println("--- DATABASE TABLES ---")
         dbClient.sql("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
             .fetch()
@@ -38,7 +40,7 @@ class TestNoteRoutes(
             .block()
 
         println("----------------------")
-
+      */
         val testDataResource = rescLoader.getResource("classpath:test-data.sql")
         val sql = testDataResource.inputStream.readBytes()
             .toString(Charsets.UTF_8)
