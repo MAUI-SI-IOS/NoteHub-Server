@@ -12,6 +12,3 @@ server:
   port: 8080
 
 
-logging:
-  level:
-    org.springframework.r2dbc.core.DefaultDatabaseClient: DEBUG

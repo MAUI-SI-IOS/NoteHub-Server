@@ -44,7 +44,7 @@ class NoteHandler(
             .bodyValueAndAwait(note)
     }
 
-    suspend fun createNote(request: ServerRequest): ServerResponse = coroutineScope {
+    suspend fun createNote(request: ServerRequest): ServerResponse = coroutineScope  {
         val note = request.awaitBodyOrNull<NoteDto>()
             ?: return@coroutineScope ServerResponse.badRequest()
                 .buildAndAwait()
@@ -54,6 +54,7 @@ class NoteHandler(
         ok()
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValueAndAwait(createdNote)
+
     }
 
     suspend fun updateNote(request: ServerRequest): ServerResponse = coroutineScope {
