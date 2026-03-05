@@ -114,8 +114,6 @@ class TestNoteRoutes(
         )
         client.post()
             .uri("/note/")
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON)
             .bodyValue(newNote)
             .exchange()
             .expectStatus().isOk
