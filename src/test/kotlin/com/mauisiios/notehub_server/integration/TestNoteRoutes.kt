@@ -5,9 +5,11 @@ import com.mauisiios.notehub_server.dto.NoteDto
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.DefaultApplicationArguments
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient
 import org.springframework.context.annotation.Import
+import org.springframework.context.annotation.Profile
 import org.springframework.core.io.ResourceLoader
 import org.springframework.r2dbc.core.DatabaseClient
 import org.springframework.test.web.reactive.server.WebTestClient
@@ -21,7 +23,7 @@ class TestNoteRoutes(
     @Autowired val client: WebTestClient,
     @Autowired val dbClient: DatabaseClient,
     @Autowired val rescLoader: ResourceLoader
-) {
+){
 
     @BeforeEach
     fun seed() {
@@ -37,6 +39,7 @@ class TestNoteRoutes(
             .fetch()
             .rowsUpdated()
             .block()
+
     }
 
     @Test
