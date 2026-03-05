@@ -9,6 +9,9 @@ import com.mauisiios.notehub_server.data.repo.TokenRepository
 import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.mapper.toDto
 import com.mauisiios.notehub_server.mapper.toEntity
+import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
+import com.mauisiios.notehub_server.service.COR_BUILDER.TaggingHandler
+import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerHandler
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toSet
@@ -17,10 +20,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class NoteService(
-    private val nlpService: NLPService,
     private val noteRepository: NoteRepository,
-    private val tokenRepository: TokenRepository,
-    private val noteTokenRepository: NoteTokenRepository,
+    private val taggerHandler: TaggingHandler,
+    private val tokenizerHandler: TokenizerHandler
 ) {
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
         .map(NoteEntity::toDto)
@@ -32,28 +34,19 @@ class NoteService(
         ?.toDto()
 
 
-    suspend fun createNote(note: NoteDto) {
-        val note = noteRepository.save(note.toEntity())
-        val note_id = note.id  ?: throw IllegalStateException("Couldnt find note id");
+    suspend fun createNote(note: NoteDto): NoteDto{
 
-        val words = nlpService.analyze(note.rawContent)
-        val keys   = words.keys
+        val note = noteRepository.save(note.toEntity()).toDto();
 
-        val existingTokens = tokenRepository.findAllById(keys)
-        val existingWords = existingTokens.map { it.token }.toSet()
+        //process tokens
+        val processedTokens = HandlerChainBuilder
+            .start(tokenizerHandler)
+            .append(taggerHandler)
+            .build()
+            .execute(note.rawContent);
 
-        val newTokens = keys.filter { it !in existingWords}
-            .map { TokenEntity(it) }
-        tokenRepository.saveAll(newTokens).collect{}
-
-        val noteTokens = words.map { (word, frequency)->
-            NoteTokensEntity(
-                note_id,
-                word,
-                frequency
-            )
-        }
-        noteTokenRepository.saveAll(noteTokens).collect {}
+         /* --- will be added in feature token route--- */
+        return note
     }
 
     suspend fun deleteNote(id: Long) = noteRepository.deleteById(id)

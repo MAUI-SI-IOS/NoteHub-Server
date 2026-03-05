@@ -1,0 +1,27 @@
+### JetBrains IDE (IntelliJ)
+.idea/
+*.iml
+out/
+.kotlin/
+
+### Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### Spring Boot & Logs
+logs/
+*.log
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.spring-beans/
+
+### Docker & Environment
+.env
+compose.override.yaml
+
+### macOS / OS X
+.DS_Store

@@ -10,3 +10,5 @@ spring:
       mode: always
 server:
   port: 8080
+
+
