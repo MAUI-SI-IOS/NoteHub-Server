@@ -30,7 +30,7 @@ class NoteHubRouter {
             GET("", noteHandler::listNotes)
         }
         "/token".nest {
-            GET("/word/{token}", tokenHandler::allNoteFromToken)
+            GET("/{token}", tokenHandler::allNoteFromToken)
             GET("/note/{id}", tokenHandler::allTokenFromNote)
         }
     }
