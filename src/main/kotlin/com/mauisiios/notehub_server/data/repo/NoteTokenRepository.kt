@@ -9,13 +9,13 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface NoteTokenRepository : CoroutineCrudRepository<NoteTokensEntity,String> {
 
-    @Query("""SELECT t* FROM token t
-            JOIN note_token nt on t.token = nt.tokenId
-            WHERE nt.noteId = :noteId""")
+    @Query("""SELECT t.* FROM token t
+            JOIN note_token nt on t.token = nt.token_id
+            WHERE nt.note_id = :noteId""")
     suspend fun findAllTokensByNoteId(noteId: Long): Flow<TokenEntity>
 
-    @Query("""SELECT n* FROM note n
-            JOIN note_token nt ON n.id = nt.noteId
-            WHERE nt.tokenId = :token""")
+    @Query("""SELECT n.* FROM note n
+            JOIN note_token nt ON n.id = nt.note_id
+            WHERE nt.token_id = :token""")
     suspend fun findAllNotesByTokenId(token: String): Flow<NoteEntity>
 }
