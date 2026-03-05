@@ -7,10 +7,8 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
+import org.springframework.web.reactive.function.server.bodyAndAwait
 import org.springframework.web.reactive.function.server.bodyValueAndAwait
-import org.springframework.web.reactive.function.server.buildAndAwait
-import reactor.core.publisher.Mono
-
 
 @Component
 class TokenHandler(
@@ -20,18 +18,20 @@ class TokenHandler(
     suspend fun allNoteFromToken(req: ServerRequest): ServerResponse = coroutineScope {
         val token = req.pathVariable("token")
         val note = tokenService.getAllNoteByToken(token)
+
         ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .bodyValueAndAwait(note)
+            .bodyAndAwait(note)
     }
 
     suspend fun allTokenFromNote(req: ServerRequest): ServerResponse = coroutineScope {
         val id = req.pathVariable("id").toLong()
         val note = tokenService.getAllTokenByNote(id)
 
+
         ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .bodyValueAndAwait(note)
+            .bodyAndAwait(note)
     }
 
 }
