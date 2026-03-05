@@ -4,8 +4,6 @@ package com.mauisiios.notehub_server.unit
 import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
 import com.mauisiios.notehub_server.service.COR_BUILDER.TaggingHandler
 import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerHandler
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import kotlin.test.Test
 
 class ChainHandlerTest{
