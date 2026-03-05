@@ -5,7 +5,7 @@ interface IHandler<I,O> {
     var next: IHandler<O, *>?;
 
     fun handle(item: I): Any? {
-        val item = filter(item);
+        val item = filter(item)
         return next?.handle(item) ?: item
     }
 

@@ -21,15 +21,16 @@ class HandlerChainBuilder<I,O>(
         _tail.next = last
         return HandlerChainBuilder<I,O2>(_head=_head, _tail = last)
     }
+
     fun build(): Chain<I,O> {
         return Chain(head = _head);
     }
 }
 
-class Chain<I,O>(private val head: IHandler<I,*>){
-    fun execute(item: I): O{
-        @Suppress("UNCHECKED_CAST")
-        return head.handle(item) as O
+class Chain<I,O>( private val head: IHandler<I,*> ){
+    fun execute(item: I): O? {
+
+        return head.handle(item) as? O
     }
 }
 
