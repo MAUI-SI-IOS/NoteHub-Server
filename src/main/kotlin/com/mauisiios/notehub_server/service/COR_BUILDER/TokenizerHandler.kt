@@ -11,9 +11,9 @@ class TokenizerHandler(
     override var next: IHandler<List<String>, *>? = null
 ): IHandler<String,List<String>> {
 
-    private lateinit var tokenizer: TokenizerME
-    @PostConstruct
-    fun init() {
+
+    private var tokenizer: TokenizerME
+    init {
         // Loading the model from resources/models/en-pos-maxent.bin (example name)
         val modelFile = ClassLoader.getSystemResourceAsStream("models/fr-token.bin")
         val model = TokenizerModel(modelFile)
