@@ -29,7 +29,7 @@ class HandlerChainBuilder<I,O>(
 
 class Chain<I,O>( private val head: IHandler<I,*> ){
     fun execute(item: I): O? {
-        return head.handle(item) as O
+        return head.handle(item) as? O
     }
 }
 

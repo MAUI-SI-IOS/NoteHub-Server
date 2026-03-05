@@ -2,7 +2,6 @@ package com.mauisiios.notehub_server.mapper
 
 import com.mauisiios.notehub_server.data.entity.NoteEntity
 import com.mauisiios.notehub_server.dto.NoteDto
-import java.util.SortedMap
 
 
 fun NoteDto.toEntity() = NoteEntity(

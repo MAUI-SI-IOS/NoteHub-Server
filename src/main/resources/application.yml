@@ -12,9 +12,3 @@ server:
   port: 8080
 
 
-logging:
-  level.org.springframework.r2dbc: DEBUG
-  # Show the parameters being bound to the $1, $2, etc.
-logging.level.io.r2dbc.postgresql: DEBUG
-  # Specifically for the mapping logic
-logging.level.org.springframework.data.r2dbc: DEBUG

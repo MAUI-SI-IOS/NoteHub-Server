@@ -1,7 +1,5 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
 
-import jakarta.annotation.PostConstruct
-import opennlp.tools.postag.POSTaggerME
 import opennlp.tools.tokenize.TokenizerME
 import opennlp.tools.tokenize.TokenizerModel
 import org.springframework.stereotype.Component
