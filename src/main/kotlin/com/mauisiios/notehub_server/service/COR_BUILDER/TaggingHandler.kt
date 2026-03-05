@@ -24,9 +24,13 @@ class TaggingHandler(
         val tags = tagger.tag(tokens)
         return item.zip(tags)
             .filter { (_, tag) ->
-                tag == "NN" || tag == "NNS" || tag == "NNP" || tag == "NNPS"
+                tag == "NOUN" ||
+                        tag == "PROPN" ||
+                        tag == "SYM" ||
+                        tag == "NUM" ||
+                        tag == "X"
             }
-            .groupingBy { (word,_) -> word }
+            .groupingBy { it.first }
             .eachCount()
             .toSortedMap()
     }
