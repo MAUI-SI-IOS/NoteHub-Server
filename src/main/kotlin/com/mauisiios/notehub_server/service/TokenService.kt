@@ -20,6 +20,4 @@ class TokenService(
 
     suspend fun getAllTokenByNote(id: Long): Flow<TokenDto> =
         noteTokenRepository.findAllTokensByNoteId(id).map(TokenEntity::toDto)
-
-
 }

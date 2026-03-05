@@ -1,18 +1,17 @@
 package com.mauisiios.notehub_server.data.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Embeddable
-import jakarta.persistence.Embedded
-import jakarta.persistence.EmbeddedId
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+
+import org.springframework.data.domain.Persistable
+import org.springframework.data.relational.core.mapping.Table
 
 
-
-@Table(name = "note_token")
+@Table("note_token")
 data class NoteTokensEntity (
     val noteId: Long,
     val tokenId: String,
     val frequency: Int = 1,
-)
+): Persistable<String> { // Using String or a custom Class as the ID type
+
+    override fun getId(): String = "$noteId-$tokenId"
+    override fun isNew(): Boolean = true // Always INSERT
+}

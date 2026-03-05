@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface NoteTokenRepository : CoroutineCrudRepository<NoteTokensEntity,Long> {
+interface NoteTokenRepository : CoroutineCrudRepository<NoteTokensEntity,String> {
 
     @Query("""SELECT t* FROM token t
             JOIN note_token nt on t.token = nt.tokenId

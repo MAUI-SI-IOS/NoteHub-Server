@@ -7,6 +7,7 @@ import com.mauisiios.notehub_server.data.repo.NoteRepository
 import com.mauisiios.notehub_server.data.repo.NoteTokenRepository
 import com.mauisiios.notehub_server.data.repo.TokenRepository
 import com.mauisiios.notehub_server.dto.NoteDto
+import com.mauisiios.notehub_server.dto.TokenDto
 import com.mauisiios.notehub_server.mapper.toDto
 import com.mauisiios.notehub_server.mapper.toEntity
 import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
@@ -16,13 +17,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toSet
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class NoteService(
     private val noteRepository: NoteRepository,
     private val taggerHandler: TaggingHandler,
-    private val tokenizerHandler: TokenizerHandler
+    private val tokenizerHandler: TokenizerHandler,
+
+    private val tokenRepository: TokenRepository,
+    private val noteTokenRepository: NoteTokenRepository
 ) {
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
         .map(NoteEntity::toDto)
@@ -36,17 +39,26 @@ class NoteService(
 
     suspend fun createNote(note: NoteDto): NoteDto{
 
-        val note = noteRepository.save(note.toEntity()).toDto();
+        val savedEntity = noteRepository.save(note.toEntity())
+        val resultDto = savedEntity.toDto()
+        val noteId = resultDto.id ?: throw IllegalStateException("Note ID was not generated")
 
         //process tokens
         val processedTokens = HandlerChainBuilder
             .start(tokenizerHandler)
             .append(taggerHandler)
             .build()
-            .execute(note.rawContent);
+            .execute(note.rawContent)
+            ?.map { NoteTokensEntity(noteId , it.key, it.value) }
+            ?: throw Exception("no tokens???"); //TODO a modifier si il a lieux
 
-         /* --- will be added in feature token route--- */
-        return note
+
+        tokenRepository.saveAllUnique(processedTokens.map {it.tokenId}.toTypedArray())
+
+
+        noteTokenRepository.saveAll(processedTokens).collect {}
+
+        return resultDto
     }
 
     suspend fun deleteNote(id: Long) = noteRepository.deleteById(id)
