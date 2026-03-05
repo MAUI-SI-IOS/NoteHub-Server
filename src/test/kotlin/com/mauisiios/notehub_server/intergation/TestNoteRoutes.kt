@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient
 import org.springframework.context.annotation.Import
 import org.springframework.core.io.ResourceLoader
+import org.springframework.http.MediaType
 import org.springframework.r2dbc.core.DatabaseClient
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.reactive.server.expectBody
@@ -101,6 +102,8 @@ class TestNoteRoutes(
         )
         client.post()
             .uri("/note/")
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
             .bodyValue(newNote)
             .exchange()
             .expectStatus().isOk

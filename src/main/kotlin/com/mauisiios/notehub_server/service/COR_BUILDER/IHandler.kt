@@ -1,8 +1,8 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
 
 
-interface ITokenHandler<I,O> {
-    var next: ITokenHandler<O, *>?;
+interface IHandler<I,O> {
+    var next: IHandler<O, *>?;
 
     fun handle(item: I): Any? {
         val item = filter(item);
