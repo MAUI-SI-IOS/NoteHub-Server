@@ -25,12 +25,12 @@ class TokenHandler(
 
     suspend fun allTokenFromNote(req: ServerRequest): ServerResponse = coroutineScope {
         val id = req.pathVariable("id").toLong()
-        val note = tokenService.getAllTokenByNote(id)
+        val token = tokenService.getAllTokenByNote(id)
 
 
         ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .bodyAndAwait(note)
+            .bodyAndAwait(token)
     }
 
 }
