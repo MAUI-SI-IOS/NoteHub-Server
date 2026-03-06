@@ -60,6 +60,8 @@ class NoteService(
 
 
         coroutineScope {
+            // coroutineScope block l'execution de la fonction jusqu'a ce que tous les childJobs
+            // sont completer
             launch { noteTokenRepository.saveAll(noteTokens).collect {  } }
         }
 
