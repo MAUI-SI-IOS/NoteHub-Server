@@ -33,7 +33,7 @@ class NoteService(
     suspend fun getByTitle(title: String): NoteDto? = noteRepository.findByTitle(title)
         ?.toDto()
 
-    suspend fun createNote(note: NoteDto): NoteDto = withContext(Dispatchers.IO) {
+    suspend fun createNote(note: NoteDto): NoteDto = withContext(Dispatchers.IO) { // Optimise les routines pour les requete reseau/db
         val savedNoteDtoJob = async {
             noteRepository.save(note.toEntity())
                 .toDto()
@@ -47,6 +47,8 @@ class NoteService(
                 .execute(note.rawContent)
         }
 
+        // attendre que la note soit sauvegardé et que les tokens soient processé
+        // avant dexecuter le mapping
         val savedNoteDto = savedNoteDtoJob.await()
         val processedTokensMap = tokenProcessingJob.await()
 
@@ -60,6 +62,8 @@ class NoteService(
 
 
         coroutineScope {
+            // coroutineScope block l'execution de la fonction jusqu'a ce que tous les childJobs
+            // sont completer
             launch { tokenRepository.saveAllUnique(noteTokens.map {it.tokenId}.toTypedArray()) }
             launch { noteTokenRepository.saveAll(noteTokens) }
         }
