@@ -15,7 +15,6 @@ class NoteHubRouter {
     @Bean
     fun notesRoutes(
         noteHandler: NoteHandler,
-        tokenHandler: TokenHandler
     ): RouterFunction<ServerResponse> = coRouter {
         "/note".nest {
             GET("/title/{title}", noteHandler::getNoteByTitle)
@@ -29,6 +28,12 @@ class NoteHubRouter {
             }
             GET("", noteHandler::listNotes)
         }
+
+    }
+    @Bean
+    fun tokenRoutes(
+        tokenHandler: TokenHandler
+    ): RouterFunction<ServerResponse> = coRouter {
         "/token".nest {
             GET("/{token}", tokenHandler::allNoteFromToken)
             GET("/note/{id}", tokenHandler::allTokenFromNote)
