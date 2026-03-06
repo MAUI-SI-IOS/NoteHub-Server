@@ -8,7 +8,7 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface NoteTokenRepository : CoroutineCrudRepository<NoteTokenEntity,String> {
 
-    @Query("""SELECT * FROM note_token 
+    @Query("""SELECT * FROM note_token nt 
                      WHERE nt.note_id = :noteId""")
     suspend fun findAllTokensByNoteId(noteId: Long): Flow<NoteTokenEntity>
 

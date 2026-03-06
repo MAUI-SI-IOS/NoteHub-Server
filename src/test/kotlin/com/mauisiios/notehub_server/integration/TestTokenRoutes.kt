@@ -2,7 +2,7 @@ package com.mauisiios.notehub_server.integration
 
 import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
-import com.mauisiios.notehub_server.dto.TokenDto
+import com.mauisiios.notehub_server.dto.NoteTokenDto
 import kotlinx.coroutines.reactive.awaitSingle
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeAll
@@ -76,7 +76,7 @@ class TestTokenRoutes(
         client.get().uri("token/note/1") //checks tokens of note 1
             .exchange()
             .expectStatus().isOk
-            .expectBodyList<TokenDto>()
+            .expectBodyList<NoteTokenDto>()
             .hasSize(4)
 
     }
