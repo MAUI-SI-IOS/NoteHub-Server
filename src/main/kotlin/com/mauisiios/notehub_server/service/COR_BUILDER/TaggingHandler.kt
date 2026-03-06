@@ -12,7 +12,6 @@ class TaggingHandler(
 
     private var tagger: POSTaggerME
     init {
-        // Loading the model from resources/models/en-pos-maxent.bin (example name)
         val modelFile = ClassLoader.getSystemResourceAsStream("models/fr-pos.bin")
         val model = POSModel(modelFile)
         tagger = POSTaggerME(model)

@@ -50,6 +50,7 @@ class NoteService(
         val savedNoteDto = savedNoteDtoJob.await()
         val processedTokensMap = tokenProcessingJob.await()
 
+
         val noteTokens = processedTokensMap?.map { (key, value) ->
             NoteTokenEntity(
                 savedNoteDto.id ?: throw Exception("no id???") , // TODO: Handle with a custom exception
