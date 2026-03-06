@@ -22,13 +22,13 @@ class TaggingHandler(
         val tokens = item.toTypedArray()
         val tags = tagger.tag(tokens)
         return item.zip(tags)
-            .filter { (_, tag) ->
-                tag == "NOUN" ||
-                        tag == "PROPN" ||
-                        tag == "SYM" ||
-                        tag == "NUM" ||
-                        tag == "X"
-            }
+            .filter { (_, tag) -> // on considere les
+                tag == "NOUN" ||  // nom commun
+                tag == "PROPN"||  // Nom propre
+                tag == "SYM"  ||  // symbole (C#)
+                tag == "NUM"  ||  // numero
+                tag == "X"        // ce qui n'est pas capable de classer
+            }                     // comme un theme valide
             .groupingBy { it.first }
             .eachCount()
             .toSortedMap()
