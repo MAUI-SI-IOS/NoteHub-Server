@@ -1,10 +1,9 @@
 package com.mauisiios.notehub_server.service
 
 import com.mauisiios.notehub_server.data.entity.NoteEntity
-import com.mauisiios.notehub_server.data.entity.NoteTokensEntity
+import com.mauisiios.notehub_server.data.entity.NoteTokenEntity
 import com.mauisiios.notehub_server.data.repo.NoteRepository
 import com.mauisiios.notehub_server.data.repo.NoteTokenRepository
-import com.mauisiios.notehub_server.data.repo.TokenRepository
 import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.mapper.toDto
 import com.mauisiios.notehub_server.mapper.toEntity
@@ -21,7 +20,6 @@ class NoteService(
     private val noteRepository: NoteRepository,
     private val taggerHandler: TaggingHandler,
     private val tokenizerHandler: TokenizerHandler,
-    private val tokenRepository: TokenRepository,
     private val noteTokenRepository: NoteTokenRepository
 ) {
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
@@ -53,19 +51,16 @@ class NoteService(
         val processedTokensMap = tokenProcessingJob.await()
 
         val noteTokens = processedTokensMap?.map { (key, value) ->
-            NoteTokensEntity(
+            NoteTokenEntity(
                 savedNoteDto.id ?: throw Exception("no id???") , // TODO: Handle with a custom exception
                 key,
                 value
             )
-        } ?: throw Exception("no tokens???"); // TODO: Handle with a custom exception
+        } ?: throw Exception("no tokens???") // TODO: Handle with a custom exception
 
 
         coroutineScope {
-            // coroutineScope block l'execution de la fonction jusqu'a ce que tous les childJobs
-            // sont completer
-            launch { tokenRepository.saveAllUnique(noteTokens.map {it.tokenId}.toTypedArray()) }
-            launch { noteTokenRepository.saveAll(noteTokens) }
+            launch { noteTokenRepository.saveAll(noteTokens).collect {  } }
         }
 
         return@withContext savedNoteDto
