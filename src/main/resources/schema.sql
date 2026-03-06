@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS note (
 );
 
 CREATE TABLE IF NOT EXISTS note_token (
-    note_id     BIGINT    NOT NULL,
-    token_id    VARCHAR(255) NOT NULL,
-    frequency   INTEGER     NOT NULL DEFAULT 1,
-    PRIMARY KEY (note_id, token_id),
-    CONSTRAINT fk_note  FOREIGN KEY (note_id)  REFERENCES note(id) ON DELETE CASCADE,
+    note_id     BIGINT       NOT NULL,
+    token       VARCHAR(255) NOT NULL,
+    frequency   INTEGER      NOT NULL DEFAULT 1,
+    PRIMARY KEY (note_id, token),
+    CONSTRAINT fk_note  FOREIGN KEY (note_id)  REFERENCES note(id) ON DELETE CASCADE
 );

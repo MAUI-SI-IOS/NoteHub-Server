@@ -1,21 +1,19 @@
 package com.mauisiios.notehub_server.data.repo
 
 import com.mauisiios.notehub_server.data.entity.NoteEntity
-import com.mauisiios.notehub_server.data.entity.NoteTokensEntity
-import com.mauisiios.notehub_server.data.entity.TokenEntity
+import com.mauisiios.notehub_server.data.entity.NoteTokenEntity
 import kotlinx.coroutines.flow.Flow
 import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface NoteTokenRepository : CoroutineCrudRepository<NoteTokensEntity,String> {
+interface NoteTokenRepository : CoroutineCrudRepository<NoteTokenEntity,String> {
 
-    @Query("""SELECT t.* FROM token t
-            JOIN note_token nt on t.token = nt.token_id
-            WHERE nt.note_id = :noteId""")
-    suspend fun findAllTokensByNoteId(noteId: Long): Flow<TokenEntity>
+    @Query("""SELECT * FROM note_token 
+                     WHERE nt.note_id = :noteId""")
+    suspend fun findAllTokensByNoteId(noteId: Long): Flow<NoteTokenEntity>
 
-    @Query("""SELECT n.* FROM note n
-            JOIN note_token nt ON n.id = nt.note_id
-            WHERE nt.token_id = :token""")
+    @Query("""SELECT * FROM note n
+                     JOIN note_token nt on nt.note_id = n.id
+                     WHERE nt.token = :token""")
     suspend fun findAllNotesByTokenId(token: String): Flow<NoteEntity>
 }
