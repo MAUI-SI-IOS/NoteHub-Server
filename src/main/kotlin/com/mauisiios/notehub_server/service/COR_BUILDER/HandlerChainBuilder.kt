@@ -1,5 +1,8 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 //For type safety
 class HandlerChainBuilder<I,O>(
     var _head: IHandler<I,*>,
@@ -28,8 +31,8 @@ class HandlerChainBuilder<I,O>(
 }
 
 class Chain<I,O>( private val head: IHandler<I,*> ){
-    fun execute(item: I): O? {
-        return head.handle(item) as? O
+    suspend fun execute(item: I): O? = withContext(Dispatchers.Default) {
+        return@withContext head.handle(item) as? O
     }
 }
 

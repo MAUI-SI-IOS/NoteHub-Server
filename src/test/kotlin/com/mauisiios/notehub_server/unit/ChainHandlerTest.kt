@@ -4,6 +4,7 @@ package com.mauisiios.notehub_server.unit
 import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
 import com.mauisiios.notehub_server.service.COR_BUILDER.TaggingHandler
 import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerHandler
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
 class ChainHandlerTest{
@@ -14,7 +15,7 @@ class ChainHandlerTest{
 
 
     @Test
-    fun `Test tokenizer transformer`() {
+    fun `Test tokenizer transformer`() = runTest {
         val data = "Ceci est un test C# C# 1"
         //should return [C#,test, 1]
         val chain = HandlerChainBuilder
@@ -28,7 +29,7 @@ class ChainHandlerTest{
     }
 
     @Test
-    fun `Test tagger transformer`() {
+    fun `Test tagger transformer`() = runTest {
         val data = listOf<String>("Ceci", "est", "un", "test", "C#", "C#", "1")
         //should return [C#,test, 1]
         val chain = HandlerChainBuilder
@@ -42,7 +43,7 @@ class ChainHandlerTest{
     }
 
     @Test
-    fun `Test pipe`() {
+    fun `Test pipe`() = runTest {
         val data = "Ceci est un test C# C# 1"
         //should return [C#,test, 1]
         val chain = HandlerChainBuilder
