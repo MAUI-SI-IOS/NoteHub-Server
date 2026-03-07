@@ -1,4 +1,6 @@
-package com.mauisiios.notehub_server.intergation
+
+package com.mauisiios.notehub_server.integration
+
 
 import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
@@ -22,7 +24,7 @@ class TestNoteRoutes(
     @Autowired val client: WebTestClient,
     @Autowired val dbClient: DatabaseClient,
     @Autowired val rescLoader: ResourceLoader
-) {
+){
 
     @BeforeEach
     fun seed() {
@@ -38,6 +40,7 @@ class TestNoteRoutes(
             .fetch()
             .rowsUpdated()
             .block()
+
     }
 
     @Test

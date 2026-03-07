@@ -18,4 +18,3 @@ INSERT INTO note (title, raw_content, formatted_content)
 VALUES ('Ninth Note', 'Content for the ninth note', 'Formatted content for the ninth note');
 INSERT INTO note (title, raw_content, formatted_content)
 VALUES ('Tenth Note', 'Content for the tenth note', 'Formatted content for the tenth note');
-

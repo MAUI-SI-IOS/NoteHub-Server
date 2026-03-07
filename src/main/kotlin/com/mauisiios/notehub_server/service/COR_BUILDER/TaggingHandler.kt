@@ -1,5 +1,4 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
-import jakarta.annotation.PostConstruct
 import opennlp.tools.postag.POSModel
 import java.util.SortedMap;
 import opennlp.tools.postag.POSTaggerME
@@ -13,7 +12,6 @@ class TaggingHandler(
 
     private var tagger: POSTaggerME
     init {
-        // Loading the model from resources/models/en-pos-maxent.bin (example name)
         val modelFile = ClassLoader.getSystemResourceAsStream("models/fr-pos.bin")
         val model = POSModel(modelFile)
         tagger = POSTaggerME(model)
@@ -23,10 +21,14 @@ class TaggingHandler(
         val tokens = item.toTypedArray()
         val tags = tagger.tag(tokens)
         return item.zip(tags)
-            .filter { (_, tag) ->
-                tag == "NN" || tag == "NNS" || tag == "NNP" || tag == "NNPS"
-            }
-            .groupingBy { (word,_) -> word }
+            .filter { (_, tag) -> // on considere les
+                tag == "NOUN" ||  // nom commun
+                tag == "PROPN"||  // Nom propre
+                tag == "SYM"  ||  // symbole (C#)
+                tag == "NUM"  ||  // numero
+                tag == "X"        // ce qui n'est pas capable de classer
+            }                     // comme un theme valide
+            .groupingBy { it.first }
             .eachCount()
             .toSortedMap()
     }

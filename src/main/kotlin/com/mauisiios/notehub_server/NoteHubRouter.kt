@@ -1,6 +1,7 @@
 package com.mauisiios.notehub_server
 
 import com.mauisiios.notehub_server.handler.NoteHandler
+import com.mauisiios.notehub_server.handler.TokenHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
@@ -13,7 +14,7 @@ class NoteHubRouter {
 
     @Bean
     fun notesRoutes(
-        noteHandler: NoteHandler
+        noteHandler: NoteHandler,
     ): RouterFunction<ServerResponse> = coRouter {
         "/note".nest {
             GET("/title/{title}", noteHandler::getNoteByTitle)
@@ -26,6 +27,16 @@ class NoteHubRouter {
                 PATCH("", noteHandler::updateNote)
             }
             GET("", noteHandler::listNotes)
+        }
+
+    }
+    @Bean
+    fun tokenRoutes(
+        tokenHandler: TokenHandler
+    ): RouterFunction<ServerResponse> = coRouter {
+        "/token".nest {
+            GET("/{token}", tokenHandler::allNoteFromToken)
+            GET("/note/{id}", tokenHandler::allTokenFromNote)
         }
     }
 }
