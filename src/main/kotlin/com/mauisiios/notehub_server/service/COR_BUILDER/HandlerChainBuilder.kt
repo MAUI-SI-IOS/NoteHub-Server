@@ -5,10 +5,20 @@ import kotlinx.coroutines.withContext
 
 //For type safety
 class HandlerChainBuilder<I,O>(
-    var _head: IHandler<I,*>,
-    var _tail: IHandler<*,O>,
-)
-{
+    private var _head: IHandler<I,*>,
+    private var _tail: IHandler<*,O>,
+) {
+    init {
+        require(fun(): Boolean {
+            var curr: IHandler<*, *>? = _head
+            do {
+                if (curr == _tail) return true
+                curr = curr?.next
+            } while (curr != null)
+            return false
+        }.invoke()) { "_head and _tail must be either the same or linked one to another" }
+    }
+
     companion object {
         fun <I,O> start(first: IHandler<I,O>): HandlerChainBuilder<I,O> {
             return HandlerChainBuilder(first,first)
