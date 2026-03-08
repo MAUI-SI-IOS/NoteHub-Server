@@ -4,20 +4,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 //For type safety
-class HandlerChainBuilder<I,O>(
+class HandlerChainBuilder<I,O> private constructor(
     private var _head: IHandler<I,*>,
     private var _tail: IHandler<*,O>,
 ) {
-    init {
-        require(fun(): Boolean {
-            var curr: IHandler<*, *>? = _head
-            do {
-                if (curr == _tail) return true
-                curr = curr?.next
-            } while (curr != null)
-            return false
-        }.invoke()) { "_head and _tail must be either the same or linked one to another" }
-    }
 
     companion object {
         fun <I,O> start(first: IHandler<I,O>): HandlerChainBuilder<I,O> {
@@ -36,7 +26,7 @@ class HandlerChainBuilder<I,O>(
     }
 
     fun build(): Chain<I,O> {
-        return Chain(head = _head);
+        return Chain(head = _head)
     }
 }
 
