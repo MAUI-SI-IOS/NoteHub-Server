@@ -7,9 +7,7 @@ import com.mauisiios.notehub_server.data.repo.NoteTokenRepository
 import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.mapper.toDto
 import com.mauisiios.notehub_server.mapper.toEntity
-import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
-import com.mauisiios.notehub_server.service.COR_BUILDER.TaggingHandler
-import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerHandler
+import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerFactory
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,8 +16,6 @@ import org.springframework.stereotype.Service
 @Service
 class NoteService(
     private val noteRepository: NoteRepository,
-    private val taggerHandler: TaggingHandler,
-    private val tokenizerHandler: TokenizerHandler,
     private val noteTokenRepository: NoteTokenRepository
 ) {
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
@@ -38,11 +34,8 @@ class NoteService(
         }
 
         val tokenProcessingJob = async {
-            HandlerChainBuilder
-                .start(tokenizerHandler)
-                .append(taggerHandler)
-                .build()
-                .execute(note.rawContent)
+            TokenizerFactory
+                .tokenize(note.rawContent)
         }
 
         // attendre que la note soit sauvegardé et que les tokens soient processé
