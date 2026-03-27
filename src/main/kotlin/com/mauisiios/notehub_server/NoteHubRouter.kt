@@ -1,13 +1,16 @@
 package com.mauisiios.notehub_server
 
+import com.mauisiios.notehub_server.handler.NoteEditSyncHandler
 import com.mauisiios.notehub_server.handler.NoteHandler
 import com.mauisiios.notehub_server.handler.TokenHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
+import org.springframework.web.reactive.HandlerMapping
 import org.springframework.web.reactive.function.server.RouterFunction
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.coRouter
+import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping
 
 @Configuration(proxyBeanMethods = false)
 class NoteHubRouter {
@@ -39,4 +42,12 @@ class NoteHubRouter {
             GET("/note/{id}", tokenHandler::allTokenFromNote)
         }
     }
+
+    @Bean
+    fun noteSyncRoutes(
+        noteEditSyncHandler: NoteEditSyncHandler
+    ): HandlerMapping = SimpleUrlHandlerMapping(
+        mapOf("/note/edit/ws" to noteEditSyncHandler),
+        -1
+    )
 }
