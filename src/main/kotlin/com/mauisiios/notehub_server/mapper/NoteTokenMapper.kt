@@ -11,7 +11,7 @@ fun NoteTokenEntity.toDto() = NoteTokenDto (
 )
 
 
-fun NoteTokenDto.toDto() = NoteTokenEntity (
+fun NoteTokenDto.toEntity() = NoteTokenEntity (
     noteId = this.noteId,
     token = this.token,
     frequency = this.frequency,
