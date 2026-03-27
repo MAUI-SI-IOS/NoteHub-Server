@@ -41,6 +41,7 @@ class NoteEditSyncHandler(
                 }
                 session.textMessage(responseTxt)
             }
+
         return session.send(
             outputFlow.asPublisher()
         )
