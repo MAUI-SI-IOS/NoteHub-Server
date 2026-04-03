@@ -8,15 +8,21 @@ class NewLineInterpretor : IMarkdownCharInterpreter {
     override fun interpret(ctx: InterpreterContext) {
         val lastExpression = ctx.expressions.lastOrNull()
 
-        if (lastExpression == null && ctx.isNewLine) {
-            ctx.expressions.add(
+        when {
+            lastExpression == null  -> ctx.expressions.add(
                 NoteFormattedExpression(
                     NoteFormattedExpressionType.PlainText,
                     "",
                 )
             )
-        }
 
-        ctx.isNewLine = true
+            lastExpression.content.endsWith(" ".repeat(2)) && lastExpression.type == NoteFormattedExpressionType.PlainText -> {
+                lastExpression.content = lastExpression.content
+                    .dropLast(2)
+                    .plus("\n")
+            }
+
+            else -> ctx.isNewLine = true
+        }
     }
 }

@@ -33,10 +33,6 @@ class SpaceCharInterpreter : IMarkdownCharInterpreter {
                 lastAfterRemoval.content += "\n"
             }
 
-            lastExpression.content == "   " && lastExpression.type == NoteFormattedExpressionType.PlainText -> {
-                lastExpression.content = "\t"
-                ctx.isNewLine = true
-            }
 
             lastExpression.content.all { it == '#' } && lastExpression.type == NoteFormattedExpressionType.PlainText -> {
                 ctx.expressions.removeLast()
