@@ -17,7 +17,6 @@ object InterpreterFlyweightStore {
 
             val interpreter: IMarkdownCharInterpreter = when (type) {
                 ClosingParantheseInterpreter::class -> ClosingParantheseInterpreter()
-                DashCharInterpreter::class -> DashCharInterpreter()
                 NewLineInterpretor::class -> NewLineInterpretor()
                 SpaceCharInterpreter::class -> SpaceCharInterpreter()
                 else -> {
@@ -32,8 +31,7 @@ object InterpreterFlyweightStore {
 
     fun getType(key: Char): KClass<out IMarkdownCharInterpreter> = when (key) {
             ')' -> ClosingParantheseInterpreter::class
-            '-' -> DashCharInterpreter::class
-            '\n' -> NewLineInterpretor::class
+            '\n', '\r' -> NewLineInterpretor::class
             ' ' -> SpaceCharInterpreter::class
             else -> LetterInterpreter::class
         }
