@@ -11,6 +11,7 @@ class MarkdownParserService {
 
     suspend fun parse(markdown: String): List<NoteFormattedExpression> {
         val mdFlow = markdown
+            .replace("\r", "")
             .toList()
             .asFlow()
 
@@ -22,7 +23,7 @@ class MarkdownParserService {
                 .interpret(interpreterCtx)
         }
 
-        return interpreterCtx.expressions
+        return interpreterCtx.interpretedExpressions
     }
 
 }
