@@ -68,13 +68,15 @@ class SpaceCharInterpreter : IMarkdownCharInterpreter {
                 )
             }
 
-            "^- \\[([ x])]$".toRegex().matches(lastExpression.content) && lastExpression.type == NoteFormattedExpressionType.PlainText -> {
+            "^\\[([ x])]$".toRegex().matches(lastExpression.content) && lastExpression.type == NoteFormattedExpressionType.ListItem.Unordered -> {
                 ctx.expressions.removeLast()
 
                 ctx.expressions.add(
                     NoteFormattedExpression(
                         NoteFormattedExpressionType.ListItem.CheckBox(
-                            lastExpression.content.contains('x')
+                            lastExpression.content
+                                .take(3)
+                                .contains("x")
                         ),
                         ""
                     )
