@@ -1,13 +1,13 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
+import kotlinx.coroutines.flow.*
 import opennlp.tools.postag.POSModel
-import java.util.SortedMap;
 import opennlp.tools.postag.POSTaggerME
 import org.springframework.stereotype.Component
 
 @Component
 class TaggingHandler(
-    override var next: IHandler<SortedMap<String, Int>, *>? = null
-) : IHandler<List<String>, SortedMap<String, Int>>  {
+    override var next: IHandler<Flow<Pair<String, Int>>, *>? = null
+) : IHandler<Flow<String>, Flow<Pair<String, Int>>>  {
 
 
     private var tagger: POSTaggerME
@@ -17,19 +17,36 @@ class TaggingHandler(
         tagger = POSTaggerME(model)
     }
 
-    override fun filter(item: List<String>): SortedMap<String, Int> {
-        val tokens = item.toTypedArray()
-        val tags = tagger.tag(tokens)
-        return item.zip(tags)
-            .filter { (_, tag) -> // on considere les
-                tag == "NOUN" ||  // nom commun
-                tag == "PROPN"||  // Nom propre
-                tag == "SYM"  ||  // symbole (C#)
-                tag == "NUM"  ||  // numero
-                tag == "X"        // ce qui n'est pas capable de classer
-            }                     // comme un theme valide
-            .groupingBy { it.first }
-            .eachCount()
-            .toSortedMap()
+    override suspend fun filter(item: Flow<String>): Flow<Pair<String, Int>> {
+        val tokenList = item.toList()
+        val tags = tagger.tag(tokenList.toTypedArray())
+            .toList()
+            .asFlow()
+        
+        return item
+            .zip(tags) { token, tag -> token to tag }
+            .filter { (_, tag) ->
+                // String! type assert that tag is not null
+                // if the tagger failed to tag the token, 
+                // we filter it out
+                tag != null &&
+                // Nom commun
+                tag == "NOUN" ||
+                // Nom propre
+                tag == "PROPN" ||
+                // Symbol (C#)
+                tag == "SYM" ||
+                // Numero
+                tag == "NUM" ||
+                // Ce qui n'est pas classer comme un theme valide
+                tag == "X"
+            }
+            .scan(mutableMapOf<String, Int>()) { occurrenceMap, (token, _) ->
+                occurrenceMap[token] = (occurrenceMap[token] ?: 0) + 1
+                occurrenceMap
+            }
+            .zip(item) { occurrenceMap, token -> 
+                token to occurrenceMap[token]!!
+            }
     }
 }
