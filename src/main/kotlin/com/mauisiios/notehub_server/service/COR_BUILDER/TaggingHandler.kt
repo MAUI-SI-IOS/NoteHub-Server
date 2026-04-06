@@ -1,5 +1,7 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
 import opennlp.tools.postag.POSModel
 import opennlp.tools.postag.POSTaggerME
 import org.springframework.stereotype.Component
@@ -17,36 +19,35 @@ class TaggingHandler(
         tagger = POSTaggerME(model)
     }
 
-    override suspend fun filter(item: Flow<String>): Flow<Pair<String, Int>> {
+    override suspend fun filter(item: Flow<String>): Flow<Pair<String, Int>> = flow {
         val tokenList = item.toList()
         val tags = tagger.tag(tokenList.toTypedArray())
-            .toList()
-            .asFlow()
         
-        return item
-            .zip(tags) { token, tag -> token to tag }
-            .filter { (_, tag) ->
-                // String! type assert that tag is not null
-                // if the tagger failed to tag the token, 
-                // we filter it out
-                tag != null &&
-                // Nom commun
-                tag == "NOUN" ||
-                // Nom propre
-                tag == "PROPN" ||
-                // Symbol (C#)
-                tag == "SYM" ||
-                // Numero
-                tag == "NUM" ||
-                // Ce qui n'est pas classer comme un theme valide
-                tag == "X"
+        val tokenOccurenceMap = tokenList
+            .filterIndexed { index, _ ->
+                val tag = tags[index]
+                tag in listOf(
+                    // Nom commun
+                    "NOUN",
+                    // Nom propre
+                    "PROPN",
+                    // Symbol (C#)
+                    "SYM",
+                    // Numero
+                    "NUM",
+                    // Ce qui n'est pas classer comme un theme valide
+                    "X",
+                )
             }
-            .scan(mutableMapOf<String, Int>()) { occurrenceMap, (token, _) ->
+            .fold(mutableMapOf<String, Int>()) { occurrenceMap, token ->
                 occurrenceMap[token] = (occurrenceMap[token] ?: 0) + 1
                 occurrenceMap
             }
-            .zip(item) { occurrenceMap, token -> 
-                token to occurrenceMap[token]!!
-            }
+        
+        for ((token, occurrence) in tokenOccurenceMap)
+            emit(
+                token to occurrence
+            )
+        
     }
 }
