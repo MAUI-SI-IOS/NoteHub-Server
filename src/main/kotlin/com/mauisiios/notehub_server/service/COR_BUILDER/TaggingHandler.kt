@@ -1,13 +1,15 @@
 package com.mauisiios.notehub_server.service.COR_BUILDER
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
 import opennlp.tools.postag.POSModel
-import java.util.SortedMap;
 import opennlp.tools.postag.POSTaggerME
 import org.springframework.stereotype.Component
 
 @Component
 class TaggingHandler(
-    override var next: IHandler<SortedMap<String, Int>, *>? = null
-) : IHandler<List<String>, SortedMap<String, Int>>  {
+    override var next: IHandler<Flow<Pair<String, Int>>, *>? = null
+) : IHandler<Flow<String>, Flow<Pair<String, Int>>>  {
 
 
     private var tagger: POSTaggerME
@@ -17,19 +19,35 @@ class TaggingHandler(
         tagger = POSTaggerME(model)
     }
 
-    override fun filter(item: List<String>): SortedMap<String, Int> {
-        val tokens = item.toTypedArray()
-        val tags = tagger.tag(tokens)
-        return item.zip(tags)
-            .filter { (_, tag) -> // on considere les
-                tag == "NOUN" ||  // nom commun
-                tag == "PROPN"||  // Nom propre
-                tag == "SYM"  ||  // symbole (C#)
-                tag == "NUM"  ||  // numero
-                tag == "X"        // ce qui n'est pas capable de classer
-            }                     // comme un theme valide
-            .groupingBy { it.first }
-            .eachCount()
-            .toSortedMap()
+    override suspend fun filter(item: Flow<String>): Flow<Pair<String, Int>> = flow {
+        val tokenList = item.toList()
+        val tags = tagger.tag(tokenList.toTypedArray())
+        
+        val tokenOccurenceMap = tokenList
+            .filterIndexed { index, _ ->
+                val tag = tags[index]
+                tag in listOf(
+                    // Nom commun
+                    "NOUN",
+                    // Nom propre
+                    "PROPN",
+                    // Symbol (C#)
+                    "SYM",
+                    // Numero
+                    "NUM",
+                    // Ce qui n'est pas classer comme un theme valide
+                    "X",
+                )
+            }
+            .fold(mutableMapOf<String, Int>()) { occurrenceMap, token ->
+                occurrenceMap[token] = (occurrenceMap[token] ?: 0) + 1
+                occurrenceMap
+            }
+        
+        for ((token, occurrence) in tokenOccurenceMap)
+            emit(
+                token to occurrence
+            )
+        
     }
 }

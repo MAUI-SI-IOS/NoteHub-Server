@@ -4,6 +4,8 @@ package com.mauisiios.notehub_server.unit
 import com.mauisiios.notehub_server.service.COR_BUILDER.HandlerChainBuilder
 import com.mauisiios.notehub_server.service.COR_BUILDER.TaggingHandler
 import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerHandler
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
@@ -22,7 +24,8 @@ class ChainHandlerTest{
             .start(tokenizerHandler)
             .build()
 
-        val filtered = chain.execute(data);
+        val filtered = chain.execute(data)
+            ?.toList()
         println(filtered.toString())
         org.assertj.core.api.Assertions.assertThat(filtered)
             .hasSize(7)
@@ -30,13 +33,14 @@ class ChainHandlerTest{
 
     @Test
     fun `Test tagger transformer`() = runTest {
-        val data = listOf<String>("Ceci", "est", "un", "test", "C#", "C#", "1")
+        val data = flowOf("Ceci", "est", "un", "test", "C#", "C#", "1")
         //should return [C#,test, 1]
         val chain = HandlerChainBuilder
             .start(taggingHandler)
             .build()
 
-        val filtered = chain.execute(data);
+        val filtered = chain.execute(data)
+            ?.toList()
         println(filtered.toString())
         org.assertj.core.api.Assertions.assertThat(filtered)
             .hasSize(3)
@@ -53,9 +57,10 @@ class ChainHandlerTest{
 
         val filtered = chain.execute(data)
             ?: throw Exception("filter is null")
+        
 
         println(filtered.toString())
-        org.assertj.core.api.Assertions.assertThat(filtered)
+        org.assertj.core.api.Assertions.assertThat(filtered.toList().toMap())
             .hasSize(3)
             .containsEntry("C#",2)
             .containsEntry("test",1)
