@@ -71,6 +71,25 @@ class TestMarkdownParser {
         Assert.state((result[1].type as NoteFormattedExpressionType.Link).url == "#url-to-note", "result url should be #url-to-note")
         Assert.state(result[1].content == "This text will be shown", "result should contain the correct content")
     }
+    
+    @Test
+    fun `Test multiple link single-line markdown`() = runTest {
+        val result = markdownParser.parse(
+            markdownResourceLoader.multipleLinkSample
+        )
+        
+        Assert.notNull(result, "result should not be null")
+        Assert.notEmpty(result, "result should not be empty")
+        Assert.noNullElements(result, "result should not contain null elements")
+        Assert.state(result.size == 8, "result should have height expressions")
+        Assert.state(result[1].type is NoteFormattedExpressionType.Link, "result type should be a link")
+        Assert.state((result[1].type as NoteFormattedExpressionType.Link).url == "#first-header", "result url should be #first-header")
+        Assert.state(result[1].content == "link 1", "result should contain the correct content")
+        Assert.state(result[3].type is NoteFormattedExpressionType.Link, "result type should be a link")
+        Assert.state((result[3].type as NoteFormattedExpressionType.Link).url == "#second-header", "result url should be #second-header")
+        Assert.state(result[3].content == "link 2", "result should contain the correct content")
+    }
+    
 
     @Test
     fun `Test unordered list single-line markdown`() = runTest {

@@ -33,7 +33,7 @@ class NoteEditSyncHandler(
                     // update the note through the service and get the updated note
                     val note = noteService.updateNote(
                         updateAction.toDto()
-                    ).toDto()
+                    )
                     // return the updated note as a JSON string
                     objectMapper.writeValueAsString(note)
                 } catch (e: JacksonException) {
