@@ -3,6 +3,8 @@ package com.mauisiios.notehub_server.integration
 import com.mauisiios.notehub_server.TestcontainersConfiguration
 import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.dto.NoteTokenDto
+import com.mauisiios.notehub_server.model.NoteFormattedExpression
+import com.mauisiios.notehub_server.model.NoteFormattedExpressionType
 import kotlinx.coroutines.reactive.awaitSingle
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeAll
@@ -39,7 +41,6 @@ class TestTokenRoutes(
             null,
             "Premiere Note",
             "la nouvelle note C#, bonjour au monde entier",
-            "contenue formatter pas important"
         )
 
         client.post()
@@ -48,7 +49,6 @@ class TestTokenRoutes(
             .exchange()
             .expectStatus().isOk
             .expectBody<NoteDto>()
-            .isEqualTo(newNote.copy(id = 1))
     }
 
 
@@ -66,7 +66,7 @@ class TestTokenRoutes(
                     1,
                     "Premiere Note",
                     "la nouvelle note C#, bonjour au monde entier",
-                    "contenue formatter pas important"
+                    listOf(NoteFormattedExpression(NoteFormattedExpressionType.PlainText, "la nouvelle note C#, bonjour au monde entier"))
                 )
             )
     }

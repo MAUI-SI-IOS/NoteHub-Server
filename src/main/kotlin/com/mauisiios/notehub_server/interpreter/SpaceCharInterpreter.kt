@@ -82,6 +82,15 @@ class SpaceCharInterpreter : IMarkdownCharInterpreter {
                     )
                 )
             }
+            
+            lastExpression.type is NoteFormattedExpressionType.Link -> {
+                ctx.expressions.add(
+                    NoteFormattedExpression(
+                        NoteFormattedExpressionType.PlainText,
+                        c.toString(),
+                    )
+                )
+            }
 
 
 

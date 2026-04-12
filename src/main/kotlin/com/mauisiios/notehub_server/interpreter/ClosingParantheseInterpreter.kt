@@ -16,7 +16,7 @@ class ClosingParantheseInterpreter : IMarkdownCharInterpreter {
                 )
             )
 
-            "\\[.*]\\(.*".toRegex().matches(lastExpression.content) -> {
+            ".*\\[.*]\\(.*".toRegex().matches(lastExpression.content) -> {
                 val linkStr = lastExpression.content
                     .dropWhile { it != '[' }
 
