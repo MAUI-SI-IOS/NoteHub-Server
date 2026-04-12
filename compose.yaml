@@ -7,3 +7,17 @@ services:
       POSTGRES_USER: notehub
     ports:
       - "5432:5432"
+    
+  server:
+    image: 'ghcr.io/maui-si-ios/notehub-server:latest'
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=notehubDB
+      - POSTGRES_USER=notehub
+      - POSTGRES_PASSWORD=notehub_password
