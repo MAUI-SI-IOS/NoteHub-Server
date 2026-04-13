@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.asFlow
 import opennlp.tools.tokenize.TokenizerME
 import opennlp.tools.tokenize.TokenizerModel
 import org.springframework.stereotype.Component
+import java.io.InputStream
 
 @Component
 class TokenizerHandler(
@@ -14,9 +15,14 @@ class TokenizerHandler(
 
     private var tokenizer: TokenizerME
     init {
-        val modelFile = ClassLoader.getSystemResourceAsStream("models/fr-token.bin")
-        val model = TokenizerModel(modelFile)
+      val resourcePath = "models/fr-token.bin" // Verify this filename!
+    val inputStream = this::class.java.classLoader.getResourceAsStream(resourcePath)
+        ?: throw IllegalStateException("Tokenizer model '$resourcePath' not found!")
+
+    inputStream.use { stream ->
+        val model = TokenizerModel(stream)
         tokenizer = TokenizerME(model)
+    }
     }
 
 
