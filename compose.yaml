@@ -7,8 +7,10 @@ services:
       POSTGRES_USER: notehub
     ports:
       - "5432:5432"
-  app:
-    build: 
+    
+  server:
+    image: 'ghcr.io/maui-si-ios/notehub-server:latest'
+    build:
       context: .
     ports:
       - "8080:8080"
