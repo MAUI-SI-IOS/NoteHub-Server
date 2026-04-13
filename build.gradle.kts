@@ -53,7 +53,7 @@ dependencies {
 
 
 
-    runtimeOnly("org.postgresql:r2dbc-postgresql")
+    implementation("org.postgresql:r2dbc-postgresql:1.0.7.RELEASE")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

@@ -8,7 +8,6 @@ import com.mauisiios.notehub_server.dto.NoteDto
 import com.mauisiios.notehub_server.mapper.toDto
 import com.mauisiios.notehub_server.mapper.toEntity
 import com.mauisiios.notehub_server.service.COR_BUILDER.TokenizerFactory
-import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.count
@@ -22,6 +21,10 @@ class NoteService(
     private val noteTokenRepository: NoteTokenRepository,
     private val markdownParserService: MarkdownParserService
 ) {
+    companion object {
+        const val CREATE_LINK_FROM_TOKEN_THRESHOLD = 3
+    }
+
     fun getAll(): Flow<NoteDto> = noteRepository.findAll()
         .map(NoteEntity::toDto)
 
@@ -36,28 +39,22 @@ class NoteService(
             ?: throw Exception("no tokens???") // TODO: change for a specific Exception for better handling
 
         var contentToFormat = note.rawContent
-        tokenProcessingFlow.collect { (token, _) ->
-            // TODO: Set a threshold so that only recurring theme are replaced by links
-            contentToFormat = contentToFormat.replace(token, "[$token](#${token})") // Replacing tokens by links to them 
+        tokenProcessingFlow.collect { (token, _) -> // NOTE: linking to exist
+            // Only create links for tokens that are already present in other notes (themes)
+            val tokenOccurenceInAllNotes = noteTokenRepository.findAllNotesByTokenId(token)
+                .count()
+            if (tokenOccurenceInAllNotes > CREATE_LINK_FROM_TOKEN_THRESHOLD) {
+                contentToFormat = contentToFormat.replace(token, "[$token](#${token.replace(" ", "-")})")
+            }
         }
 
         var parsedContent = markdownParserService.parse(contentToFormat)
-
-        val savedNoteDtoJob = async {
-            noteRepository.save(
-                note.toEntity()
-                    /* NOTE: will be commented out until the conversion is implemented
-                    .apply { formattedContent = parsedContent.joinToString(separator = "") { 
-                        it.content
-                    } } // TODO: should be a JSON object
-                     */
-            ).toDto()
-        }
-
-        // attendre que la note soit sauvegardé et que les tokens soient processé
-        // avant dexecuter le mapping
-        val savedNoteDto = savedNoteDtoJob.await()
-
+        
+        val savedNoteDto = noteRepository.save(
+            note.toEntity().apply {
+                formattedContent = parsedContent
+            }
+        ).toDto()
 
         val noteTokens = tokenProcessingFlow.map { (key, value) ->
             NoteTokenEntity(
@@ -74,6 +71,39 @@ class NoteService(
 
     suspend fun deleteNote(id: Long) = noteRepository.deleteById(id)
 
-    suspend fun updateNote(note: NoteDto) = noteRepository.save(note.toEntity())
+    suspend fun updateNote(note: NoteDto): NoteDto = coroutineScope {
+        val tokenProcessingFlow = TokenizerFactory.tokenize(note.rawContent)
+            ?: throw Exception("no tokens???") // TODO: change for a specific Exception for better handling
+        
+        var contentToFormat = note.rawContent
+        tokenProcessingFlow.collect { (token, _) ->
+            // Only create links for tokens that are already present in other notes (
+            val tokenOccurenceInAllNotes = noteTokenRepository.findAllNotesByTokenId(token)
+                .count { it.id != note.id }
+            if (tokenOccurenceInAllNotes > CREATE_LINK_FROM_TOKEN_THRESHOLD) 
+                contentToFormat = contentToFormat.replace(token, "[$token](#${token.replace(" ", "-")})")
+        }
+
+        var parsedContent = markdownParserService.parse(contentToFormat)
+
+        val savedNoteDto = noteRepository.save(
+            note.toEntity().apply {
+                formattedContent = parsedContent
+            }
+        ).toDto()
+
+        val noteTokens = tokenProcessingFlow.map { (key, value) ->
+            NoteTokenEntity(
+                savedNoteDto.id
+                    ?: throw Exception("no id???"), // TODO: Handle with a custom exception
+                key,
+                value
+            )
+        }
+        
+        launch { noteTokenRepository.saveAll(noteTokens).count() }
+
+        return@coroutineScope savedNoteDto
+    }
 
 }

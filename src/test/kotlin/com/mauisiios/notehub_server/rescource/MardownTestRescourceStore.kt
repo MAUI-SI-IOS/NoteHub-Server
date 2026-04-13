@@ -37,6 +37,12 @@ class MardownTestRescourceStore(
         get() = resourceLoader.getResource("classpath:markdown/link.md")
             .inputStream.readBytes()
             .toString(Charsets.UTF_8)
+    
+    val multipleLinkSample: String
+        get() = resourceLoader.getResource("classpath:markdown/multiple_link.md")
+            .inputStream.readBytes()
+            .toString(Charsets.UTF_8)
+
 
     val unorderedListSample: String
         get() = resourceLoader.getResource("classpath:markdown/unordered_list.md")
