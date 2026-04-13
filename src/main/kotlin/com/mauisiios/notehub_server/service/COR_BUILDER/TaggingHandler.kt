@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.toList
 import opennlp.tools.postag.POSModel
 import opennlp.tools.postag.POSTaggerME
 import org.springframework.stereotype.Component
+import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.ResourceLoader
 
 @Component
 class TaggingHandler(
@@ -14,10 +16,15 @@ class TaggingHandler(
 
     private var tagger: POSTaggerME
     init {
-        val modelFile = ClassLoader.getSystemResourceAsStream("models/fr-pos.bin")
-        val model = POSModel(modelFile)
-        tagger = POSTaggerME(model)
-    }
+	val resourcePath = "models/fr-pos.bin"
+    	val inputStream = this::class.java.classLoader.getResourceAsStream(resourcePath)
+        	?: throw IllegalStateException("Resource not found: $resourcePath. Ensure it is in src/main/resources/models/")
+
+    	inputStream.use { 
+        	val model = POSModel(it)
+        	tagger = POSTaggerME(model)
+    	}
+}
 
     override suspend fun filter(item: Flow<String>): Flow<Pair<String, Int>> = flow {
         val tokenList = item.toList()
