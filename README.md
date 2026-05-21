@@ -1,3 +1,4 @@
+
 # NoteHub Server
 
 NoteHub Server is a Kotlin-based backend application providing note synchronization and markdown parsing features. It uses Spring Boot, R2DBC, and PostgreSQL.
